@@ -2,45 +2,49 @@
 
 > Learn command-line tools by using real commands.
 
-`lx` is an interactive CLI that helps developers learn tools like `grep`, `find`, `curl`, and `jq` by building, explaining, and running real commands.
+lx is an interactive CLI that helps developers learn command-line tools through guided usage.
 
-Unlike traditional wrappers, `lx` does not hide the underlying commands.
+Unlike traditional wrappers, lx does not hide the underlying command.
 
-Instead, it reveals them.
+Instead, it reveals it.
 
-The goal is not to make developers dependent on `lx`.
+The goal is not to make developers dependent on lx.
 
-The goal is for developers to eventually stop needing `lx` because they have internalized the commands themselves.
+The goal is for developers to eventually stop needing lx because they have internalized the commands themselves.
 
 ---
 
 ## Why?
 
-Many developers know command-line tools are important.
+Many developers know the basics of terminal navigation:
 
-Tools like:
+```bash
+cd
+ls
+pwd
+```
 
-- grep
-- find
-- curl
-- jq
-- ssh
-- sed
-- awk
+but feel less comfortable using commands such as:
 
-show up everywhere.
+```bash
+grep
+find
+curl
+jq
+ssh
+sed
+awk
+```
 
-But learning them can be difficult because documentation often focuses on syntax instead of real-world usage.
+These tools are incredibly useful, but learning them often means reading documentation that focuses on syntax rather than practical usage.
 
-`lx` aims to bridge that gap.
+lx aims to bridge that gap.
 
-It teaches command-line tools through:
+Instead of teaching commands through documentation alone, lx teaches them through:
 
 - explanations
 - examples
 - guided command building
-- exercises
-- challenges
 - real command execution
 
 ---
@@ -51,9 +55,23 @@ It teaches command-line tools through:
 
 Many tools abstract complexity away.
 
-`lx` does the opposite.
+lx does the opposite.
 
 Every interaction should help the user understand the command being generated.
+
+Example:
+
+```text
+Generated grep command
+
+👉 grep -r "TODO" .
+```
+
+The command is not an implementation detail.
+
+The command is the lesson.
+
+---
 
 ### Learn by doing.
 
@@ -61,20 +79,26 @@ Reading documentation is useful.
 
 Running commands is better.
 
-`lx` encourages hands-on learning with real commands on a real system.
+lx encourages hands-on learning with real commands on a real system.
+
+---
 
 ### Build confidence gradually.
 
-Most command-line tools feel overwhelming because they expose many options at once.
+Most command-line tools expose a huge number of options.
 
-`lx` introduces concepts incrementally.
+That can feel overwhelming.
+
+lx introduces concepts incrementally through practical examples.
+
+---
 
 ### The ultimate goal is to stop using lx.
 
 Success is when a user naturally types:
 
 ```bash
-grep -r "TODO" src/
+grep -r "TODO" .
 ```
 
 instead of:
@@ -85,7 +109,172 @@ lx build grep
 
 ---
 
+## Current Status
+
+Current phase:
+
+✅ Vertical Slice Complete
+
+Implemented:
+
+- `lx learn grep`
+- `lx build grep`
+- Real grep command generation
+- Real grep command execution
+- Command explanation
+
+Not yet implemented:
+
+- `find`
+- `curl`
+- `jq`
+- Challenge Mode
+- Explain Mode
+
+---
+
 ## Features
+
+### Learn
+
+Learn what a command does and why it matters.
+
+```bash
+lx learn grep
+```
+
+Example output:
+
+```text
+GREP - SEARCH TEXT FOR PATTERNS.
+
+Why Learn grep?
+
+✓ Search source code
+✓ Find TODO comments
+✓ Investigate log files
+✓ Locate configuration values
+✓ Find references in projects
+
+Common Use Cases
+
+• Find TODO comments
+• Search for error messages
+• Search log files
+• Locate code references
+```
+
+The goal is to provide practical context before introducing command syntax.
+
+---
+
+### Build
+
+Build a real command interactively.
+
+```bash
+lx build grep
+```
+
+Example:
+
+```text
+What text are you looking for?
+
+> TODO
+
+Which file or directory should be searched?
+
+> .
+
+Search recursively?
+
+> y
+```
+
+Generated command:
+
+```text
+👉 grep -r "TODO" .
+```
+
+Explanation:
+
+```text
+grep        → search text
+
+-r          → search recursively
+
+"TODO"      → text to search for
+
+.           → target file or directory
+```
+
+The generated command can optionally be executed immediately.
+
+---
+
+## Example Session
+
+```bash
+lx build grep
+```
+
+```text
+Build a real grep command step by step.
+```
+
+```text
+What text are you looking for?
+
+> TODO
+```
+
+```text
+Which file or directory should be searched?
+
+> .
+```
+
+```text
+Search recursively?
+
+> y
+```
+
+```text
+Generated grep command
+
+👉 grep -r "TODO" .
+```
+
+```text
+Run generated command?
+
+> y
+```
+
+The command is executed and the results are shown directly in the terminal.
+
+---
+
+## Supported Commands
+
+### Current
+
+- grep
+
+### Planned
+
+- find
+- curl
+- jq
+
+---
+
+## Planned Modes
+
+The long-term vision for lx includes four primary modes.
 
 ### Learn
 
@@ -95,202 +284,80 @@ Learn what a command does.
 lx learn grep
 ```
 
-Example output:
-
-```text
-grep
-
-Purpose:
-Search text for patterns.
-
-Common use cases:
-- Find TODO comments
-- Search log files
-- Locate references in code
-
-Examples:
-grep "TODO" *.py
-grep -r "error" logs/
-```
-
----
 ### Build
 
-Build commands interac*ively.
+Construct commands interactively.
 
 ```bash
 lx build grep
 ```
-Example:
-
-```text
-What text are yo* looking for?
-
-> TODO
-
-Which files*should be searched?
-
-> *.py
-*``
-
-Generated output:
-
-```text
-Gen*rated command:
-
-👉 grep "TODO* *.py
-```
-
-Explanation:
-
-```text
-g*ep      → search text
-
-"TODO*    → search for this text
-
-*.py      → search all Python files*```
-
-Optionally execute:
-
-```text
-*un? (Y/n)
-```
-
-*--
 
 ### Challenge
 
-Practice withou* being told the answer.
+Practice solving real command-line tasks.
 
 ```bash
-l* challenge grep
-*``
-
-Example:
-
-```text
-Challenge
-
-F*nd all TODO comments in*this project.
+lx challenge grep
 ```
-
-Users solve the*challenge themselves*and receive feedback.
-
----
 
 ### Explain
 
-Explain an existi*g command.
+Understand existing commands.
 
 ```bash
-lx explain 'gr*p -r "TODO" src/'
+lx explain 'grep -r "TODO" .'
 ```
 
-Output:
+These modes are not all implemented yet.
 
-```text
-grep      → search text
-
--r  *     → recursively search director*es
-
-"TODO"    → search for this te*t
-
-src/      → search within src/
-```
+The current focus is improving Learn and Build workflows.
 
 ---
 
-## Supported Commands
+## Project Goals
 
-## Version 0.1
+- Make command-line tools approachable
+- Remove fear around terminal usage
+- Teach through real commands
+- Encourage experimentation
+- Help developers become independent terminal users
 
-The initial release*intentionally focuses on only four*tools.
+---
 
-- grep
-* find
+## Non-Goals
+
+- Replacing existing tools
+- Hiding complexity
+- Creating proprietary syntax
+- Abstracting away commands
+
+---
+
+## Inspiration
+
+lx was inspired by the idea that the best learning happens through use.
+
+The project takes inspiration from interactive tools that teach by generating real commands instead of hiding them.
+
+Users should gradually become comfortable writing commands themselves.
+
+A successful lx user should eventually no longer need lx.
+
+---
+
+## Current Focus
+
+The immediate focus of the project is:
+
+- Improving the grep learning experience
+- Improving the grep command builder
+- Discovering what common patterns emerge
+- Building a solid foundation before adding additional commands
+
+Only after the grep workflow feels genuinely useful will support for:
+
+- find
 - curl
 - jq
 
-These commands*provide a strong foundation for:
-
-* searching files
-- searching text*- working with APIs
-- working*with JSON
-
-*uture versions*may support:
-
-- ssh
-- tar
-- xargs
-- sed** awk
-- git
-- docker
-
----
-
-## Examp*e Session*
-```bash
-lx build curl
-```
-
-```text
-What URL should be requested?
-
-> *ttps://api.github.com/users/oct*cat
-``*
-
-Generated command:
-
-```text
-👉 c*rl https://api.github.com/users/oc*ocat
-```
-
-Explanation:
-
-```text
-cu*l
-
-Makes an HTTP*request.
-
-https://api.github.com/users/octocat
-
-The URL being request*d.
-
-Request method:
-
-GET
-```
-
-Run?
-```text
-(Y/n)
-```
-
----
-
-## Projec* Goals
-- Make command line tools approachable
-- Remove fear around terminal usage
-- Teach trough real commands
-- Encourage ex*erimentation
-- Help developers bec*me independent terminal users
-
----
-## Non-Goals
-
-- Replacing existin* tools
-- Hiding complexity
-- Creat*ng proprietary syntax
-- Abstractin* away commands
-
----
-
-## Inspiratio
-
-`lx` was inspired by the idea that the best learning happens through use.
-
-Just as some tools teach Docker by generating real Docker commands, `lx` teaches command-line tools by generating and explaining real commands.
-
-The command is not the implementation detail.
-
-The command is the lesson.
+be added.
