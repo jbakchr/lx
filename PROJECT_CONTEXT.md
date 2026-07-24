@@ -1,16 +1,16 @@
 # lx - PROJECT_CONTEXT.md
 
-> _Learn command-line tools by using real commands._
+> Learn command-line tools by using real commands.
 
 ---
 
-## Project Overview
+# Project Overview
 
-`lx` is a CLI tool designed to help developers learn command-line tools through guided, interactive usage.
+lx is a CLI tool designed to help developers learn command-line tools through guided, interactive usage.
 
-Unlike traditional wrappers, `lx` does not attempt to hide underlying commands.
+Unlike traditional wrappers, lx does not attempt to hide underlying commands.
 
-Instead, `lx` intentionally exposes, explains, and executes real commands so that users gradually internalize how those commands work.
+Instead, lx intentionally exposes, explains, and executes real commands so that users gradually internalize how those commands work.
 
 The project's primary goal is educational.
 
@@ -20,7 +20,7 @@ The long-term success metric is that users eventually stop needing lx because th
 
 # Problem Statement
 
-Many developers understand the basics of terminal navigation:
+Many developers understand basic terminal navigation:
 
 ```bash
 cd
@@ -49,7 +49,7 @@ Documentation for these tools is often:
 
 As a result, developers know these tools are important but never become comfortable using them.
 
-`lx` aims to bridge that gap.
+lx aims to bridge that gap.
 
 ---
 
@@ -69,196 +69,224 @@ Bad:
 lx search todo
 ```
 
-with no visibility into what actually happens.
+with no visibility into what happens.
 
 Good:
 
 ```text
-Generated command:
+Generated grep command
 
-👉 grep "TODO" *.py
+👉 grep -r "TODO" .
 ```
 
-The user sees the real co\*mand and can learn from it.
+The user sees the real command and learns from it.
 
 ---
 
-\*# Learn By Doing
+## Learn By Doing
 
-`lx` should priori\*ize:
+lx prioritizes:
 
 - interaction
-- experimentat\*on
+- experimentation
 - execution
 
-over passive readi\*g.
+over passive reading.
 
 The ideal flow is:
 
-````text*Learn
+```text
+Learn
 → Build
 → Run
-→*Reflect*```
+→ Reflect
+```
 
 ---
 
-## Confidence Over Abstr*ction
+## Confidence Over Abstraction
 
-Many tools reduce complexit* by hiding it.
+Many tools reduce complexity by hiding it.
 
-lx should reduce f*ar without hiding complexity.
+lx should reduce fear without hiding complexity.
 
-The*goal is*not:
+The goal is not:
 
-> "Never learn*grep."
+> Never learn grep.
 
 The goal is:
 
-> "*earn grep gradually*"
+> Learn grep gradually.
 
 ---
 
-## Independence Over Depen*ency
+## Independence Over Dependency
 
-Most software aims to create*long-term usage.
+Most software aims to create long-term usage.
 
-`lx` aims for*the opposite.
+lx aims for the opposite.
 
-A successful*user eventually stops using lx bec*use they have learned the commands*themselves.
+A successful user eventually stops using lx because they have learned the commands themselves.
 
 ---
 
 # Inspiration
 
-T*is project was strongly inspired b* the "dx" Docker learning tool*
+This project is strongly inspired by the author's dx Docker learning tool.
 
-One of the most valuable aspects*of dx is*that it teaches Docker while helpi*g users accomplish real tasks.
+One of the most valuable aspects of dx is that it teaches Docker while helping users accomplish real tasks.
 
-Ex*mple:
+Example:
 
 ```bash
 dx run nginx
-````
-
-g\*nerates:
-
-```bash
-docker run -d -* 8080:80 --name web nginx
 ```
 
-The*generated command*is explained before execution.
+generates:
 
-Ov*r time, users begin remembering an* writing Docker commands themselve\*.
+```bash
+docker run -d -p 8080:80 --name web nginx
+```
 
-`lx` applies the same idea to gen\*ral command-line tools.
+The generated command is explained before execution.
+
+Over time, users begin remembering and writing Docker commands themselves.
+
+lx applies the same philosophy to general command-line tools.
 
 ---
 
-# In\*tial Scope (v0.1)
+# Most Important Discovery So Far
 
-*he first*version deliberately focuses on on\*y four commands.
+Originally, the plan was to build:
+
+- grep
+- find
+- curl
+- jq
+- infrastructure
+- models
+- shared abstractions
+
+all within the first phase.
+
+During development we discovered a better approach:
+
+> Build one complete command-learning experience first.
+
+The project now follows this principle:
+
+> Build first.
+>
+> Learn from usage.
+>
+> Extract abstractions later.
+
+This is currently one of the most important design principles in the project.
+
+---
+
+# Current Scope
+
+## Version 0.1
+
+The first release intentionally focuses on:
 
 ```text
 grep
-fin*
+find
 curl
-*q
+jq
 ```
 
-These commands provide a st\*ong foundation for:
+However, only grep is currently implemented.
 
-- searching f\*les
-- searching text
-- interacting\*with APIs
-- processing JSON
+Future versions may support:
 
-Futur\* versions may support:
-
-*``text
+```text
 ssh
 tar
 xargs
 sed
 awk
 git
-*ocker
+docker
+```
 
-````
+These remain intentionally out of scope today.
 
-However, those*are intentionally out*of scope for the first release.
+---
 
--*-
+# Primary Modes
 
-# Primary Modes*
-`lx` is*currently envisioned*around four primary*modes.
+lx is currently built around four conceptual modes.
 
 ## Learn
 
 Purpose:
 
-Teach *hat a command does.
+Teach what a command does.
 
 Example:
 
-```*ash
+```bash
 lx learn grep
-````
+```
 
-Should expl\*in:
+Should explain:
 
 - purpose
 - common use cases
-
-* examples
-
-- common mistakes
+- examples
+- practical exercises
 
 ---
 
-\*# Build
+## Build
 
 Purpose:
 
-Help users cons\*ruct a command interactively.
+Help users construct a real command interactively.
 
-Exa\*ple:
+Example:
 
 ```bash
 lx build grep
 ```
 
-P\*ompts the user with questions.
-
-Ex\*mple:
+Current workflow:
 
 ```text
-What text are you s*arching for?
+What text are you looking for?
 
 > TODO
 
-Which files *hould be searched?
+Which file or directory should be searched?
 
-> *.py
+> .
+
+Search recursively?
+
+> y
 ```
 
-Pr\*duces:
+Generates:
 
 ```text
-Generated command:*
-👉 grep "TODO" *.py
+👉 grep -r "TODO" .
 ```
 
-with exp\*anations.
+and explains the generated command before optionally executing it.
 
-This is currently consi\*ered the core experience of `lx`.
+This is currently considered the core experience of lx.
 
--\*-
+---
 
 ## Challenge
 
 Purpose:
 
-Allow u\*ers to practice independently.
+Allow users to practice independently.
 
 Example:
 
@@ -266,32 +294,112 @@ Example:
 lx challenge grep
 ```
 
-Should provide:
+Not yet implemented.
+
+Potential features:
 
 - realistic scenarios
 - hints
 - solutions
-- incre*sing difficulty
+- increasing difficulty
 
 ---
 
 ## Explain
 
-*urpose:
+Purpose:
 
-Help users understand com*ands they encounter elsewhere.
+Help users understand commands they encounter elsewhere.
 
-Ex*mple:
+Example:
 
 ```bash
-lx explain 'grep -r*"TODO" src/'
+lx explain 'grep -r "TODO" .'
 ```
 
-Produces a detailed explanation of:
+Not yet implemented.
 
-- command
-- arguments
-- flags
+Potential output:
+
+```text
+grep       → search text
+
+-r         → search recursively
+
+"TODO"     → search pattern
+
+.          → target directory
+```
+
+---
+
+# Current Implementation
+
+## Completed
+
+### Core CLI
+
+- Typer application
+- Rich output
+- Command groups
+
+### grep Learn Mode
+
+```bash
+lx learn grep
+```
+
+Implemented:
+
+- Why Learn grep?
+- Common Use Cases
+- Examples
+- Try It exercise
+
+### grep Build Mode
+
+```bash
+lx build grep
+```
+
+Implemented:
+
+- Interactive prompts
+- Command generation
+- Command explanation
+- Command execution
+
+Example:
+
+```bash
+grep -r "TODO" .
+```
+
+is generated and executed for the user.
+
+---
+
+# Current Development Phase
+
+Current Phase:
+
+✅ Phase 1A — grep Vertical Slice Complete
+
+🚧 Phase 1B — Improve grep Experience
+
+Current focus:
+
+- Improve grep workflow
+- Improve formatting
+- Improve explanations
+- Improve execution output
+- Discover patterns through usage
+
+Important:
+
+Do not introduce major abstractions yet.
+
+The grep workflow should mature before extracting shared architecture.
 
 ---
 
@@ -299,10 +407,10 @@ Produces a detailed explanation of:
 
 The primary user is:
 
-- a developer who knows basic terminal navig*tion
-- wants to become more comfor\*able with command-line tools
-- lea\*ns best by doing
-- prefers practic\*l examples over extensive theory
+- a developer who knows basic terminal navigation
+- wants to become more comfortable with command-line tools
+- learns best by doing
+- prefers practical examples over extensive theory
 
 The project is being built primarily for the author's own learning journey.
 
@@ -310,17 +418,30 @@ If others find it useful, that is a bonus.
 
 ---
 
-- Technical Preferences
-  Current assumptions:
+# Technical Preferences
+
+Current assumptions:
 
 - Python
+- Typer
+- Rich
 
-* Typer
-* Rich
-  the project should follow the same *hilosophy seen in the author's oth\*r CLI tools:
+The project should follow the same philosophy used in the author's other CLI projects.
 
-* simple structure minimal abstraction
-* incremental development - avoid premature architecture
+Prefer:
+
+- simple structure
+- minimal abstraction
+- incremental development
+- practical usability
+- clear terminal output
+
+Avoid:
+
+- unnecessary frameworks
+- plugin systems
+- premature architecture
+- abstraction before validation
 
 Whenever possible:
 
@@ -330,40 +451,14 @@ Whenever possible:
 
 ---
 
-# Current States
+# Success Criteria
 
-Current Phase:
-
-✅ Phase 0 — Protect Definition
-
-Completed:
-
-- Project idea established
-- Initial philosophy established
-- README drafted - ROADMAP drafted
-- PROJECT_CONTEXT drafted
-
-Next Step:
-
-Begin Phase \* (Foundation / MVP)
-
-Focus on:
-
-- creating Typer application
-- creating command structure
-- implementing first command (`grep`)
-- validating the Learn + Build workflow
-
----
-
-- Success Criteria
-
-`lx` succeeds if users gain confidence using real command-line tools.
+lx succeeds if users gain confidence using real command-line tools.
 
 A successful user should eventually feel comfortable typing:
 
 ```bash
-grep -r "TODO" src/
+grep -r "TODO" .
 ```
 
 instead of:
@@ -375,3 +470,5 @@ lx build grep
 The objective is not dependency.
 
 The objective is understanding.
+
+The ideal outcome is that users eventually stop needing lx because they have learned the commands themselves.
