@@ -75,9 +75,9 @@ Focus on architecture and one complete command-learning workflow.
 
 ### grep
 
-- [ ] learn grep
-- [ ] build grep
-- [ ] execute generated grep command
+- [x] learn grep
+- [x] build grep
+- [x] execute generated grep command
 
 ### find
 
