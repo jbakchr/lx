@@ -44,8 +44,8 @@ If the answer is no, reconsider the feature.
 - [x] Define philosophy
 - [x] Create README
 - [x] Create roadmap
-- [ ] Create PROJECT_CONTEXT.md
-- [ ] Create repository
+- [x] Create PROJECT_CONTEXT.md
+- [x] Create repository
 
 ## Exit Criteria
 
