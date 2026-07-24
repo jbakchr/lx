@@ -1,18 +1,16 @@
-# PROJECT_CONTEXT.md
+# lx - PROJECT_CONTEXT.md
 
-# lx
-
-> Learn command-line tools by using real commands.
+> _Learn command-line tools by using real commands._
 
 ---
 
-# Project Overview
+## Project Overview
 
-lx is a CLI tool designed to help developers learn command-line tools through guided, interactive usage.
+`lx` is a CLI tool designed to help developers learn command-line tools through guided, interactive usage.
 
-Unlike traditional wrappers, lx does not attempt to hide underlying commands.
+Unlike traditional wrappers, `lx` does not attempt to hide underlying commands.
 
-Instead, lx intentionally exposes, explains, and executes real commands so that users gradually internalize how those commands work.
+Instead, `lx` intentionally exposes, explains, and executes real commands so that users gradually internalize how those commands work.
 
 The project's primary goal is educational.
 
@@ -51,7 +49,7 @@ Documentation for these tools is often:
 
 As a result, developers know these tools are important but never become comfortable using them.
 
-lx aims to bridge that gap.
+`lx` aims to bridge that gap.
 
 ---
 
@@ -87,7 +85,7 @@ The user sees the real co\*mand and can learn from it.
 
 \*# Learn By Doing
 
-lx should priori\*ize:
+`lx` should priori\*ize:
 
 - interaction
 - experimentat\*on
@@ -124,7 +122,7 @@ The goal is:
 
 Most software aims to create*long-term usage.
 
-lx aims for*the opposite.
+`lx` aims for*the opposite.
 
 A successful*user eventually stops using lx bec*use they have learned the commands*themselves.
 
@@ -152,7 +150,7 @@ The*generated command*is explained before execution.
 
 Ov*r time, users begin remembering an* writing Docker commands themselve\*.
 
-lx applies the same idea to gen\*ral command-line tools.
+`lx` applies the same idea to gen\*ral command-line tools.
 
 ---
 
@@ -192,7 +190,7 @@ However, those*are intentionally out*of scope for the first release.
 -*-
 
 # Primary Modes*
-lx is*currently envisioned*around four primary*modes.
+`lx` is*currently envisioned*around four primary*modes.
 
 ## Learn
 
@@ -252,7 +250,7 @@ Generated command:*
 
 with exp\*anations.
 
-This is currently consi\*ered the core experience of lx.
+This is currently consi\*ered the core experience of `lx`.
 
 -\*-
 
@@ -262,15 +260,15 @@ Purpose:
 
 Allow u\*ers to practice independently.
 
-Ex\*mple:
+Example:
 
-````bash
+```bash
 lx challenge grep
-`*`
+```
 
 Should provide:
 
-- realistic sc*narios
+- realistic scenarios
 - hints
 - solutions
 - incre*sing difficulty
@@ -287,52 +285,52 @@ Ex*mple:
 
 ```bash
 lx explain 'grep -r*"TODO" src/'
-````
+```
 
-Produces a detai\*ed explanation of:
+Produces a detailed explanation of:
 
 - command
-- ar\*uments
+- arguments
 - flags
 
 ---
 
-# Intended Us\*r
+# Intended User
 
 The primary user is:
 
-- a devel*per who knows basic terminal navig*tion
+- a developer who knows basic terminal navig*tion
 - wants to become more comfor\*able with command-line tools
 - lea\*ns best by doing
 - prefers practic\*l examples over extensive theory
 
-_he project is being built primaril_ for the author's own learning jou\*ney.
+The project is being built primarily for the author's own learning journey.
 
-If others find\*it useful, that is a bonus.
+If others find it useful, that is a bonus.
 
 ---
 
-- Technical Preferences\*
+- Technical Preferences
   Current assumptions:
 
 - Python
 
 * Typer
-* Rich\*
-  *he project should follow the same *hilosophy seen in the author's oth\*r CLI tools:
+* Rich
+  the project should follow the same *hilosophy seen in the author's oth\*r CLI tools:
 
-* simple structure\*- minimal abstraction
-* incrementa* development*- avoid premature architecture
+* simple structure minimal abstraction
+* incremental development - avoid premature architecture
 
-\*henever possible:
+Whenever possible:
 
-- implement*the*simplest thing that\*works
-- prefer clarity over flexib\*lity
-- delay complexity until it i\* truly needed
+- implement the simplest thing that works
+- prefer clarity over flexibility
+- delay complexity until it is truly needed
 
 ---
 
-# Current Stat\*s
+# Current States
 
 Current Phase:
 
@@ -351,29 +349,29 @@ Begin Phase \* (Foundation / MVP)
 
 Focus on:
 
-- \*reating Typer application
-- creati\*g command structure
-- implementing\*first command (`grep`)
-- validatin\* the Learn + Build workflow
+- creating Typer application
+- creating command structure
+- implementing first command (`grep`)
+- validating the Learn + Build workflow
 
 ---
 
 - Success Criteria
 
-lx succeeds if *sers gain confidence using real*command-line tools.
+`lx` succeeds if users gain confidence using real command-line tools.
 
-A successful *ser should eventually feel comfort*ble typing:
+A successful user should eventually feel comfortable typing:
 
 ```bash
-grep -r "TODO* src/
+grep -r "TODO" src/
 ```
 
 instead of:
 
 ```bash
-lx*build grep
+lx build grep
 ```
 
-The objective is n\*t dependency.
+The objective is not dependency.
 
-The objective is un\*erstanding.
+The objective is understanding.
