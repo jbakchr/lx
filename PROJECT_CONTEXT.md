@@ -338,10 +338,10 @@ Current Phase:
 
 Completed:
 
-- Proj\*ct idea established
-- Initial phil\*sophy established
-- README drafted\*- ROADMAP drafted
-- PROJECT_CONTEX\* drafted
+- Project idea established
+- Initial philosophy established
+- README drafted - ROADMAP drafted
+- PROJECT_CONTEXT drafted
 
 Next Step:
 
