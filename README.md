@@ -113,7 +113,7 @@ grep "TODO" *.py
 grep -r "error" logs/
 ```
 
----*
+---
 ### Build
 
 Build commands interac*ively.
@@ -121,7 +121,7 @@ Build commands interac*ively.
 ```bash
 lx build grep
 ```
-*Example:
+Example:
 
 ```text
 What text are yo* looking for?
@@ -176,7 +176,7 @@ F*nd all TODO comments in*this project.
 
 Users solve the*challenge themselves*and receive feedback.
 
-*--
+---
 
 ### Explain
 
@@ -188,7 +188,7 @@ lx explain 'gr*p -r "TODO" src/'
 
 Output:
 
-``*text
+```text
 grep      → search text
 
 -r  *     → recursively search director*es
@@ -196,13 +196,13 @@ grep      → search text
 "TODO"    → search for this te*t
 
 src/      → search within src/
-*``
+```
 
 ---
 
 ## Supported Commands
 
-##* Version 0.1
+## Version 0.1
 
 The initial release*intentionally focuses on only four*tools.
 
@@ -219,7 +219,7 @@ These commands*provide a strong foundation for:
 
 *uture versions*may support:
 
-* ssh
+- ssh
 - tar
 - xargs
 - sed** awk
@@ -233,7 +233,7 @@ These commands*provide a strong foundation for:
 lx build curl
 ```
 
-```tex*
+```text
 What URL should be requested?
 
 > *ttps://api.github.com/users/oct*cat
@@ -261,21 +261,21 @@ Request method:
 GET
 ```
 
-Run?*
+Run?
 ```text
 (Y/n)
 ```
 
 ---
 
-## Projec* Goals*
-- Make*command*line tools approachable
-- Remove f*ar around terminal usage
-- Teach t*rough real commands
+## Projec* Goals
+- Make command line tools approachable
+- Remove fear around terminal usage
+- Teach trough real commands
 - Encourage ex*erimentation
 - Help developers bec*me independent terminal users
 
----*
+---
 ## Non-Goals
 
 - Replacing existin* tools
@@ -285,12 +285,12 @@ Run?*
 
 ---
 
-## Inspiratio*
+## Inspiratio
 
-`lx* was inspired by the idea*that the best learning happens thr*ugh use.
+`lx` was inspired by the idea that the best learning happens through use.
 
-Just as*some tools*teach Docker by generating*real Docker commands, `lx` teaches*command-line tools by generating a*d explaining real commands.
+Just as some tools teach Docker by generating real Docker commands, `lx` teaches command-line tools by generating and explaining real commands.
 
-The c*mmand is not the implementation*detail.
+The command is not the implementation detail.
 
-The command is the lesson*
+The command is the lesson.
