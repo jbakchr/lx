@@ -1,6 +1,6 @@
 import typer
 
-from lx.tools import grep
+from lx.tools.grep.build import build as build_grep
 
 
 def build(tool: str) -> None:
@@ -9,7 +9,7 @@ def build(tool: str) -> None:
     """
 
     if tool == "grep":
-        grep.build()
+        build_grep()
         return
 
     raise typer.BadParameter(

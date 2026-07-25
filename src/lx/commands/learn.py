@@ -1,6 +1,6 @@
 import typer
 
-from lx.tools import grep
+from lx.tools.grep.learn import learn as learn_grep
 
 
 def learn(tool: str) -> None:
@@ -9,7 +9,7 @@ def learn(tool: str) -> None:
     """
 
     if tool == "grep":
-        grep.learn()
+        learn_grep()
         return
 
     raise typer.BadParameter(
