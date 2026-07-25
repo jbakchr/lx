@@ -3,6 +3,8 @@ from lx.ui.console import header
 from lx.ui.console import separator
 
 def learn_section() -> None:
+    separator()
+
     header("[bold]Why Learn grep?[/bold]")
 
     console.print("✓ Search source code")
@@ -23,7 +25,9 @@ def use_cases_section() -> None:
     console.print()
 
 
-def examples() -> None:
+def examples_section() -> None:
+    separator()
+
     header("[bold]Examples[/bold]")
 
     console.print('[bold cyan]grep "TODO" *.py[/bold cyan]')
@@ -48,6 +52,8 @@ def examples() -> None:
     console.print()
 
 def try_it_section() -> None:
+    separator()
+
     header("[bold]Try It[/bold]")
 
     console.print(

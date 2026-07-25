@@ -3,7 +3,7 @@ import subprocess
 import typer
 
 from lx.content.grep import (
-    examples,
+    examples_section,
     learn_section,
     try_it_section,
     use_cases_section,
@@ -15,7 +15,7 @@ from lx.ui.console import (
 )
 
 
-def print_generated_command(command: str) -> None:
+def show_generated_command(command: str) -> None:
     separator()
 
     header("[bold]Generated grep command[/bold]")
@@ -27,7 +27,7 @@ def print_generated_command(command: str) -> None:
     console.print()
 
 
-def explain_command(search_text: str, target: str, recursive: bool) -> None:
+def show_command_explanation(search_text: str, target: str, recursive: bool) -> None:
     separator()
 
     header("[bold]Explanation[/bold]")
@@ -112,16 +112,12 @@ def create_display_command(
 
 def learn() -> None:
     separator()
+
     header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]")
 
-    separator()
     learn_section()
     use_cases_section()
-
-    separator()
-    examples()
-
-    separator()
+    examples_section()
     try_it_section()
 
 
@@ -142,9 +138,9 @@ def build() -> None:
         recursive,
     )
 
-    print_generated_command(command_string)
+    show_generated_command(command_string)
 
-    explain_command(
+    show_command_explanation(
         search_text=search_text,
         target=target,
         recursive=recursive,
