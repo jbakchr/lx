@@ -1,4 +1,5 @@
 import subprocess
+from dataclasses import dataclass
 
 import typer
 
@@ -15,6 +16,14 @@ from lx.ui.console import (
 )
 
 
+@dataclass
+class GrepCommand:
+    search_text: str
+    target: str
+    recursive: bool
+
+
+
 def show_generated_command(command: str) -> None:
     separator()
 
@@ -27,22 +36,22 @@ def show_generated_command(command: str) -> None:
     console.print()
 
 
-def show_command_explanation(search_text: str, target: str, recursive: bool) -> None:
+def show_command_explanation(grep_command: GrepCommand) -> None:
     separator()
 
     header("[bold]Explanation[/bold]")
 
     console.print("grep        → search text")
 
-    if recursive:
+    if grep_command.recursive:
         console.print("-r          → search recursively")
 
     console.print(
-        f'"{search_text}"    → text to search for'
+        f'"{grep_command.search_text}"    → text to search for'
     )
 
     console.print(
-        f"{target}      → files to search"
+        f"{grep_command.target}      → files to search"
     )
 
     console.print()
@@ -60,7 +69,7 @@ def run_command(command_parts: list[str]) -> None:
     )
 
 
-def collect_build_inputs() -> tuple[str, str, bool]:
+def collect_build_inputs() -> GrepCommand:
     search_text = typer.prompt(
         "What text are you looking for?"
     )
@@ -79,33 +88,33 @@ def collect_build_inputs() -> tuple[str, str, bool]:
         default=False,
     )
 
-    return search_text, target, recursive
+    return GrepCommand(
+        search_text=search_text,
+        target=target,
+        recursive=recursive,
+    )
 
 
-def create_command_parts(search_text: str, target: str, recursive: bool) -> list[str]:
+def create_command_parts(grep_command: GrepCommand) -> list[str]:
     command_parts = ["grep"]
 
-    if recursive:
+    if grep_command.recursive:
         command_parts.append("-r")
 
-    command_parts.append(search_text)
-    command_parts.append(target)
+    command_parts.append(grep_command.search_text)
+    command_parts.append(grep_command.target)
 
     return command_parts
 
 
-def create_display_command(
-    search_text: str,
-    target: str,
-    recursive: bool,
-) -> str:
+def create_display_command(grep_command: GrepCommand) -> str:
     display_command = ["grep"]
 
-    if recursive:
+    if grep_command.recursive:
         display_command.append("-r")
 
-    display_command.append(f'"{search_text}"')
-    display_command.append(target)
+    display_command.append(f'"{grep_command.search_text}"')
+    display_command.append(grep_command.target)
 
     return " ".join(display_command)
 
@@ -124,27 +133,15 @@ def learn() -> None:
 def build() -> None:
     header("[bold]Build a real grep command step by step.[/bold]")
 
-    search_text, target, recursive = collect_build_inputs()
+    grep_command = collect_build_inputs()
 
-    command_parts = create_command_parts(
-        search_text,
-        target,
-        recursive,
-    )
+    command_parts = create_command_parts(grep_command)
 
-    command_string = create_display_command(
-        search_text,
-        target,
-        recursive,
-    )
+    command_string = create_display_command(grep_command)
 
     show_generated_command(command_string)
 
-    show_command_explanation(
-        search_text=search_text,
-        target=target,
-        recursive=recursive,
-    )
+    show_command_explanation(grep_command)
 
     should_run = typer.confirm(
         "Run generated command?",
