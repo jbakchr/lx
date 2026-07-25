@@ -122,13 +122,10 @@ def learn() -> None:
     header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]", True)
 
     learn_section()
-
     use_cases_section()
 
-    separator()
     examples()
 
-    separator()
     try_it_section()
 
 
