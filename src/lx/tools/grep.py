@@ -1,95 +1,24 @@
 import subprocess
 
 import typer
-from rich.console import Console
-from rich.rule import Rule
 
-console = Console()
-
-
-def print_separator() -> None:
-    console.print(Rule())
-
-
-def print_header(text: str, sep: bool = False) -> None:
-    if sep:
-        print_separator()
-
-    console.print()
-    console.print(text)
-    console.print()
-
-    if sep:
-        print_separator()
-
-
-def print_learn_section() -> None:
-    print_header("[bold]Why Learn grep?[/bold]")
-
-    console.print("✓ Search source code")
-    console.print("✓ Find TODO comments")
-    console.print("✓ Investigate log files")
-    console.print("✓ Locate configuration values")
-    console.print("✓ Find references in projects")
-
-
-def print_use_cases() -> None:
-    print_header("[bold]Common Use Cases[/bold]")
-
-    console.print("• Find TODO comments")
-    console.print("• Search for error messages")
-    console.print("• Search log files")
-    console.print("• Locate code references")
-
-
-def print_examples() -> None:
-    print_header("[bold]Examples[/bold]")
-
-    console.print('[bold cyan]grep "TODO" *.py[/bold cyan]')
-    console.print()
-    console.print(
-        "[italic]→ Search all Python files for TODO comments.[/italic]"
-    )
-    console.print()
-
-    console.print('[bold cyan]grep -r "error" logs/[/bold cyan]')
-    console.print()
-    console.print(
-        "[italic]→ Recursively search the logs directory.[/italic]"
-    )
-    console.print()
-
-    console.print('[bold cyan]grep -i "warning" app.log[/bold cyan]')
-    console.print()
-    console.print(
-        "[italic]→ Search case-insensitively.[/italic]"
-    )
-    console.print()
-
-
-def print_try_it() -> None:
-    print_header("[bold]Try It[/bold]")
-
-    console.print(
-        '[bold cyan]echo "TODO: Fix bug" > demo.txt[/bold cyan]'
-    )
-    console.print()
-
-    console.print(
-        '[bold cyan]grep "TODO" demo.txt[/bold cyan]'
-    )
-    console.print()
-
-    console.print(
-        "You should see the matching line printed to the terminal."
-    )
-    console.print()
+from lx.content.grep import (
+    examples,
+    learn_section,
+    try_it_section,
+    use_cases_section,
+)
+from lx.ui.console import (
+    console,
+    header,
+    separator,
+)
 
 
 def print_generated_command(command: str) -> None:
-    print_separator()
+    separator()
 
-    print_header("[bold]Generated grep command[/bold]")
+    header("[bold]Generated grep command[/bold]")
 
     console.print(
         f"[bold green]👉  {command}[/bold green]"
@@ -100,12 +29,12 @@ def print_generated_command(command: str) -> None:
 
 def explain_command(
     search_text: str,
-    files_pattern: str,
+    target: str,
     recursive: bool,
 ) -> None:
-    print_separator()
+    separator()
 
-    print_header("[bold]Explanation[/bold]")
+    header("[bold]Explanation[/bold]")
 
     console.print("grep        → search text")
 
@@ -117,14 +46,14 @@ def explain_command(
     )
 
     console.print(
-        f"{files_pattern}      → files to search"
+        f"{target}      → files to search"
     )
 
     console.print()
 
 
 def run_command(command_parts: list[str]) -> None:
-    print_separator()
+    separator()
 
     console.print("[bold]Executing command...[/bold]")
     console.print()
@@ -135,29 +64,7 @@ def run_command(command_parts: list[str]) -> None:
     )
 
 
-def learn() -> None:
-    print_header(
-        "[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]",
-        True,
-    )
-
-    print_learn_section()
-
-    print_use_cases()
-
-    print_separator()
-    print_examples()
-
-    print_separator()
-    print_try_it()
-
-
-def build() -> None:
-    print_header(
-        "[bold]Build a real grep command step by step.[/bold]",
-        True,
-    )
-
+def collect_build_inputs() -> tuple[str, str, bool]:
     search_text = typer.prompt(
         "What text are you looking for?"
     )
@@ -176,9 +83,14 @@ def build() -> None:
         default=False,
     )
 
-    #
-    # Command used for execution
-    #
+    return search_text, target, recursive
+
+
+def create_command_parts(
+    search_text: str,
+    target: str,
+    recursive: bool,
+) -> list[str]:
     command_parts = ["grep"]
 
     if recursive:
@@ -187,9 +99,14 @@ def build() -> None:
     command_parts.append(search_text)
     command_parts.append(target)
 
-    #
-    # Command shown to user
-    #
+    return command_parts
+
+
+def create_display_command(
+    search_text: str,
+    target: str,
+    recursive: bool,
+) -> str:
     display_command = ["grep"]
 
     if recursive:
@@ -198,13 +115,48 @@ def build() -> None:
     display_command.append(f'"{search_text}"')
     display_command.append(target)
 
-    command_string = " ".join(display_command)
+    return " ".join(display_command)
+
+
+def learn() -> None:
+    header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]", True)
+
+    learn_section()
+
+    use_cases_section()
+
+    separator()
+    examples()
+
+    separator()
+    try_it_section()
+
+
+def build() -> None:
+    header(
+        "[bold]Build a real grep command step by step.[/bold]",
+        True,
+    )
+
+    search_text, target, recursive = collect_build_inputs()
+
+    command_parts = create_command_parts(
+        search_text,
+        target,
+        recursive,
+    )
+
+    command_string = create_display_command(
+        search_text,
+        target,
+        recursive,
+    )
 
     print_generated_command(command_string)
 
     explain_command(
         search_text=search_text,
-        files_pattern=target,
+        target=target,
         recursive=recursive,
     )
 
