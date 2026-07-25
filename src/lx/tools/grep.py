@@ -27,11 +27,7 @@ def print_generated_command(command: str) -> None:
     console.print()
 
 
-def explain_command(
-    search_text: str,
-    target: str,
-    recursive: bool,
-) -> None:
+def explain_command(search_text: str, target: str, recursive: bool) -> None:
     separator()
 
     header("[bold]Explanation[/bold]")
@@ -86,11 +82,7 @@ def collect_build_inputs() -> tuple[str, str, bool]:
     return search_text, target, recursive
 
 
-def create_command_parts(
-    search_text: str,
-    target: str,
-    recursive: bool,
-) -> list[str]:
+def create_command_parts(search_text: str, target: str, recursive: bool) -> list[str]:
     command_parts = ["grep"]
 
     if recursive:
