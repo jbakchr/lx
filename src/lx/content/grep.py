@@ -24,8 +24,6 @@ def use_cases_section() -> None:
 
 
 def examples() -> None:
-    separator()
-
     header("[bold]Examples[/bold]")
 
     console.print('[bold cyan]grep "TODO" *.py[/bold cyan]')
@@ -50,8 +48,6 @@ def examples() -> None:
     console.print()
 
 def try_it_section() -> None:
-    separator()
-
     header("[bold]Try It[/bold]")
 
     console.print(

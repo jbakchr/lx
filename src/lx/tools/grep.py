@@ -119,21 +119,22 @@ def create_display_command(
 
 
 def learn() -> None:
-    header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]", True)
+    separator()
+    header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]")
 
+    separator()
     learn_section()
     use_cases_section()
 
+    separator()
     examples()
 
+    separator()
     try_it_section()
 
 
 def build() -> None:
-    header(
-        "[bold]Build a real grep command step by step.[/bold]",
-        True,
-    )
+    header("[bold]Build a real grep command step by step.[/bold]")
 
     search_text, target, recursive = collect_build_inputs()
 
