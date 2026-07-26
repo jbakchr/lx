@@ -30,24 +30,48 @@ def show_generated_command(command: str) -> None:
     console.print()
 
 
-def show_command_explanation(grep_command: GrepCommand) -> None:
+def show_how_to_read_command(grep_command: GrepCommand) -> None:
     separator()
 
-    header("[bold]Explanation[/bold]")
+    header("[bold]How To Read This Command[/bold]")
 
-    console.print("grep        → search text")
+    console.print(
+        "grep"
+    )
+    console.print(
+        "→ the tool we are using"
+    )
+
+    console.print()
 
     if grep_command.recursive:
-        console.print("-r          → search recursively")
+        console.print(
+            "-r"
+        )
+        console.print(
+            "→ search all files underneath this directory"
+        )
+
+        console.print()
 
     console.print(
-        f'"{grep_command.search_text}"    → text to search for'
+        f'"{grep_command.search_text}"'
     )
+    console.print(
+        "→ the text we want to find"
+    )
+
+    console.print()
 
     console.print(
-        f"{grep_command.target}      → files to search"
+        grep_command.target
+    )
+    console.print(
+        "→ start searching from this location"
     )
 
+    console.print()
+    separator()
     console.print()
 
 
@@ -83,7 +107,7 @@ def collect_build_inputs() -> GrepCommand:
 
     recursive = typer.confirm(
         "Search recursively?",
-        default=False,
+        default=True,
     )
 
     console.print()
@@ -134,7 +158,7 @@ def build() -> None:
 
     show_generated_command(command_string)
 
-    show_command_explanation(grep_command)
+    show_how_to_read_command(grep_command)
 
     should_run = typer.confirm(
         "Run generated command?",
