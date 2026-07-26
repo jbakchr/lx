@@ -1,18 +1,18 @@
 # lx
 
-> Learn command-line tools by using real commands.
+> _**Learn command-line tools by using real commands.**_
 
-lx is an interactive CLI that helps developers learn command-line tools through guided usage.
+`lx` is an interactive CLI that helps developers learn command-line tools through guided usage.
 
-Unlike traditional wrappers, lx does not hide the underlying command.
+Unlike traditional wrappers, `lx` does not hide the underlying command.
 
 Instead, it intentionally exposes, explains, and executes real commands so users gradually become comfortable using them directly.
 
 The goal is not dependency.
 
-The goal is understanding.
+The goal is **understanding**.
 
-A successful lx user eventually stops needing lx because they have internalized the commands themselves.
+A successful lx user eventually stops needing `lx` because they have internalized the commands themselves.
 
 ---
 
@@ -44,9 +44,9 @@ These tools are incredibly powerful, but learning them often involves reading do
 - reference-oriented
 - disconnected from real-world workflows
 
-lx bridges that gap.
+`lx` bridges that gap.
 
-Instead of teaching commands through documentation alone, lx teaches them through:
+Instead of teaching commands through documentation alone, `lx` teaches them through:
 
 - guided lessons
 - practical examples
@@ -55,9 +55,9 @@ Instead of teaching commands through documentation alone, lx teaches them throug
 
 ---
 
-# Philosophy
+## Philosophy
 
-## Don't Hide The Command
+### Don't Hide The Command
 
 The command is not an implementation detail.
 
@@ -81,13 +81,13 @@ Users should always see the real command they are learning.
 
 ---
 
-## Learn By Doing
+### Learn By Doing
 
 Reading documentation is useful.
 
 Running commands is better.
 
-lx focuses on:
+`lx` focuses on:
 
 ```text
 Learn
@@ -100,21 +100,21 @@ The goal is active learning rather than passive reading.
 
 ---
 
-## Build Confidence Gradually
+### Build Confidence Gradually
 
 Most command-line tools expose dozens or hundreds of options.
 
 That can feel overwhelming.
 
-lx introduces concepts incrementally through practical examples and guided workflows.
+`lx` introduces concepts incrementally through practical examples and guided workflows.
 
 ---
 
-## Independence Over Dependency
+### Independence Over Dependency
 
 Most software aims for long-term usage.
 
-lx aims for the opposite.
+`lx` aims for the opposite.
 
 Success is when a user naturally types:
 
@@ -130,7 +130,7 @@ lx build grep
 
 ---
 
-# Installation
+## Installation
 
 Clone the repository:
 
@@ -155,7 +155,7 @@ becomes available as a terminal command.
 
 ---
 
-# Current Status
+## Current Status
 
 Current phase:
 
@@ -186,9 +186,9 @@ Not yet implemented:
 
 ---
 
-# Supported Commands
+## Supported Commands
 
-## grep
+### grep
 
 Search text.
 
@@ -204,7 +204,7 @@ grep -r "TODO" .
 
 ---
 
-## find
+### find
 
 Locate files and directories.
 
@@ -220,7 +220,7 @@ find . -name "*.json"
 
 ---
 
-## curl
+### curl
 
 Retrieve data from the internet.
 
@@ -236,7 +236,7 @@ curl https://api.github.com
 
 ---
 
-## jq
+### jq
 
 Explore and extract JSON data.
 
@@ -256,7 +256,7 @@ jq .
 
 ---
 
-# Learn Mode
+## Learn Mode
 
 Learn what a command does.
 
@@ -292,22 +292,21 @@ CURL - RETRIEVE DATA FROM THE INTERNET.
 
 Why Learn?
 
-curl helps you retrieve data directly
-from your terminal.
+  curl helps you retrieve data directly from your terminal.
 
 Common Use Cases
 
-• Check what data an API returns
-• Download files
+  • Check what data an API returns
+  • Download files
 
 Examples
 
-curl https://api.github.com
+  curl https://api.github.com
 ```
 
 ---
 
-# Build Mode
+## Build Mode
 
 Build real commands interactively.
 
@@ -339,7 +338,7 @@ Generated curl command
 
 ---
 
-# How Command Building Works
+### How Command Building Works
 
 A build workflow typically follows this pattern:
 
@@ -397,7 +396,7 @@ Only that value was returned.
 
 ---
 
-# Example Learning Path
+## Example Learning Path
 
 The current commands intentionally build on one another:
 
@@ -439,11 +438,11 @@ jq .title
 
 ---
 
-# Planned Features
+## Planned Features
 
 Potential future additions:
 
-## Challenge Mode
+### Challenge Mode
 
 Practice solving realistic problems.
 
@@ -462,7 +461,7 @@ inside the current project.
 
 ---
 
-## Explain Mode
+### Explain Mode
 
 Understand commands you encounter elsewhere.
 
@@ -490,7 +489,7 @@ grep
 
 ---
 
-## Command Combinations
+### Command Combinations
 
 Explore how tools work together.
 
@@ -512,9 +511,9 @@ pipes*(|)
 
 ---
 
-# Project Structure
+## Project Structure
 
-_```text
+```text
 src/lx/
 ├── commands/
 │
@@ -536,24 +535,25 @@ src/lx/
 ├── ui/
 └── cli.py
 
-````
+```
 
 The s*ructure intentionally mirrors the *ser experience:
 
 ```text
-lx learn *rep
+lx learn grep
         ↓
 tools/grep/learn.py
-*lx build grep
+
+lx build grep
         ↓
 tools/grep*build.py
-````
+```
 
 This approach prioritizes clarity and discoverability over abstraction.
 
 ---
 
-# Goals
+## Goals
 
 - M\*ke command-line tools approachable
 - Reduce fear around terminal usage
@@ -564,7 +564,7 @@ This approach prioritizes clarity and discoverability over abstraction.
 
 ---
 
-# Non-Goals
+## Non-Goals
 
 - Replacing existing tools
 - Hiding complexity
@@ -574,7 +574,7 @@ This approach prioritizes clarity and discoverability over abstraction.
 
 ---
 
-# Inspiration
+## Inspiration
 
 lx is inspired by the idea that the best learning happens through use.
 
@@ -584,7 +584,7 @@ A successful lx user eventually becomes comfortable using the underlying tools d
 
 ---
 
-# Development Philosophy
+## Development Philosophy
 
 Build first.
 
