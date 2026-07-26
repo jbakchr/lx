@@ -17,6 +17,11 @@ class GrepCommand:
     recursive: bool
 
 
+def display_intro():
+    separator()
+    header("[bold]Build a real grep command step by step.[/bold]")
+    separator()
+
 
 def show_generated_command(command: str) -> None:
     separator()
@@ -35,40 +40,24 @@ def show_how_to_read_command(grep_command: GrepCommand) -> None:
 
     header("[bold]How To Read This Command[/bold]")
 
-    console.print(
-        "grep"
-    )
-    console.print(
-        "→ the tool we are using"
-    )
+    console.print("  grep")
+    console.print("    [italic]→ the tool we are using[/italic]")
 
     console.print()
 
     if grep_command.recursive:
-        console.print(
-            "-r"
-        )
-        console.print(
-            "→ search all files underneath this directory"
-        )
+        console.print("  -r")
+        console.print("    [italic]→ search all files underneath this directory[/italic]")
 
         console.print()
 
-    console.print(
-        f'"{grep_command.search_text}"'
-    )
-    console.print(
-        "→ the text we want to find"
-    )
+    console.print(f'  "{grep_command.search_text}"')
+    console.print("    → the text we want to find")
 
     console.print()
 
-    console.print(
-        grep_command.target
-    )
-    console.print(
-        "→ start searching from this location"
-    )
+    console.print(f"  {grep_command.target}")
+    console.print("    → start searching from this location")
 
     console.print()
     separator()
@@ -76,6 +65,8 @@ def show_how_to_read_command(grep_command: GrepCommand) -> None:
 
 
 def run_command(command_parts: list[str]) -> None:
+    console.print()
+
     separator()
 
     console.print()
@@ -143,12 +134,9 @@ def create_display_command(grep_command: GrepCommand) -> str:
     return " ".join(display_command)
 
 
-
-
 def build() -> None:
-    separator()
-    header("[bold]Build a real grep command step by step.[/bold]")
-    separator()
+
+    display_intro()
 
     grep_command = collect_build_inputs()
 
@@ -164,8 +152,6 @@ def build() -> None:
         "Run generated command?",
         default=True,
     )
-
-    console.print()
 
     if should_run:
         run_command(command_parts)
