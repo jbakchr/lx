@@ -2,25 +2,34 @@
 
 > Learn command-line tools by using real commands.
 
-This roadmap intentionally prioritizes learning, simplicity, and iterative development.
+This roadmap intentionally prioritizes:
 
-The goal is not to build a large framework.
+- learning
+- simplicity
+- incremental development
+- real-world usage
+
+The goal is not to build a framework.
 
 The goal is to help developers gain confidence using real command-line tools through guided exploration, command construction, and hands-on practice.
 
 ---
 
-## Current Phase
+# Current Phase
 
 ✅ Phase 0: Project Definition
 
 ✅ Phase 1A: grep Vertical Slice
 
-🚧 Phase 1B: Improve grep Experience (Current)
+✅ Phase 1B: grep Experience Improvements
+
+✅ Phase 1C: find Vertical Slice
+
+🚧 Phase 1D: Multi-Command Validation (Current)
 
 ---
 
-## Guiding Principles
+# Guiding Principles
 
 When making decisions, prefer:
 
@@ -38,36 +47,36 @@ If the answer is no, reconsider the feature.
 
 ---
 
-## Phase 0: Project Definition
+# Phase 0: Project Definition
 
-### Status
+## Status
 
-✅ Completed
+✅ Complete
 
-### Completed Work
+## Completed Work
 
-- [x] Define project purpose
-- [x] Define philosophy
-- [x] Create README
-- [x] Create ROADMAP
-- [x] Create PROJECT_CONTEXT
-- [x] Create repository
+- Define project purpose
+- Define philosophy
+- Create README
+- Create ROADMAP
+- Create PROJECT_CONTEXT
+- Create repository
 
-### Exit Criteria
+## Exit Criteria
 
 ✅ Complete
 
 ---
 
-## Phase 1A: grep Vertical Slice
+# Phase 1A: grep Vertical Slice
 
-### Goal
+## Goal
 
 Validate the core lx learning experience with a single command.
 
-The focus is not architecture.
+The focus was not architecture.
 
-The focus is proving that:
+The focus was proving that:
 
 ```bash
 lx learn grep
@@ -81,154 +90,377 @@ lx build grep
 
 feel useful.
 
-### Completed Work
+## Completed Work
 
-#### Core CLI
+### Core CLI
 
-- [x] Create Typer application
-- [x] Add Rich output
-- [x] Add command groups
+- Create Typer application
+- Add Rich output
+- Add command routing
 
-#### Learn Mode
+### Learn Mode
 
-- [x] Implement `lx learn grep`
-- [x] Add purpose section
-- [x] Add examples
-- [x] Add common use cases
-- [x] Add practical exercise
+- Implement `lx learn grep`
+- Add purpose section
+- Add common use cases
+- Add examples
+- Add try-it exercise
 
-#### Build Mode
+### Build Mode
 
-- [x] Implement `lx build grep`
-- [x] Interactive prompts
-- [x] Generate grep command
-- [x] Explain generated command
-- [x] Execute generated command
+- Implement `lx build grep`
+- Interactive prompts
+- Generate grep command
+- Explain generated command
+- Execute generated command
 
-#### Lessons Learned
+## Lessons Learned
 
 - Build before abstracting
-- Let duplication reveal architecture
-- Learning experience matters more than framework design
-- Real command execution provides immediate feedback
+- Learning experience matters more than architecture
+- Real command execution creates immediate feedback
+- Generated commands should be visible
 
-### Exit Criteria
+## Exit Criteria
 
 ✅ Complete
 
-Users can run:
+---
 
-```bash
-lx learn grep
-```
+# Phase 1B: grep Experience Improvements
 
-and
+## Status
 
-```bash
-lx build grep
-```
+✅ Complete
 
-and execute a real generated grep command.
+## Completed Work
+
+### Formatting
+
+- Improve output readability
+- Improve section hierarchy
+- Improve command presentation
+
+### Learning Experience
+
+- Replace technical explanations with:
+  - "How To Read This Command"
+- Emphasize understanding over syntax
+- Improve generated command explanations
+
+### Project Structure
+
+- Extract command-specific logic
+- Split grep into:
+  - `learn.py`
+  - `build.py`
+
+## Lessons Learned
+
+- Educational explanations outperform technical descriptions
+- Command breakdowns help users remember commands
+- Structure should mirror user workflows
+
+## Exit Criteria
+
+✅ Complete
 
 ---
 
-## Phase 1B: Improve grep Experience
+# Phase 1C: find Vertical Slice
 
-### Status
+## Status
+
+✅ Complete
+
+## Goal
+
+Validate that the lx architecture works for a second command.
+
+## Completed Work
+
+### Learn Mode
+
+Implemented:
+
+```bash
+lx learn find
+```
+
+Includes:
+
+- Why Learn?
+- Common Use Cases
+- Examples
+- Try It
+
+### Build Mode
+
+Implemented:
+
+```bash
+lx build find
+```
+
+Includes:
+
+- Interactive prompts
+- Command generation
+- Command breakdown
+- Command execution
+
+### Generated Command Example
+
+```bash
+find . -name "*.py"
+```
+
+### Command Breakdown Example
+
+```text
+find
+→ the tool we are using
+
+.
+→ start searching from this location
+
+-name
+→ search by file name
+
+"*.py"
+→ file name pattern
+```
+
+## Lessons Learned
+
+- The existing architecture works well for additional tools
+- Tool-specific workflows are more important than shared abstractions
+- Consistency improves learning
+
+## Exit Criteria
+
+✅ Complete
+
+---
+
+# Phase 1D: Multi-Command Validation
+
+## Status
 
 🚧 Current Phase
 
-### Goal
+## Goal
 
-Refine the grep workflow through real usage.
+Implement a third command and observe what architecture naturally emerges.
 
-Focus on usability and learning value.
+The purpose is not to build abstractions.
 
-Do not add new commands until grep feels genuinely useful.
+The purpose is to discover patterns.
 
-### Learn Improvements
-
-- [ ] Improve visual formatting
-- [ ] Improve section hierarchy
-- [ ] Improve command highlighting
-- [ ] Add common mistakes section
-- [ ] Add related commands section
-
-### Build Improvements
-
-- [ ] Improve explanation formatting
-- [ ] Improve command preview formatting
-- [ ] Improve execution output formatting
-- [ ] Better handling of large grep results
-- [ ] Better handling of binary files
-- [ ] Better defaults for search targets
-
-### grep Options
-
-- [ ] Ignore case (`-i`)
-- [ ] Whole word match (`-w`)
-- [ ] Show line numbers (`-n`)
-- [ ] Invert matches (`-v`)
-
-### Exit Criteria
-
-The grep workflow feels genuinely useful during daily usage.
-
----
-
-## Phase 1C: Extract Emerging Patterns
-
-### Goal
-
-Extract shared functionality only after grep has matured.
-
-Avoid premature abstractions.
-
-### Possible Infrastructure
-
-- [ ] Shared formatter utilities
-- [ ] Shared command display helper
-- [ ] Shared explanation helper
-- [ ] Shared section rendering
-- [ ] Example rendering helper
-
-### Important
-
-Only build abstractions that have emerged from actual duplication.
-
-### Exit Criteria
-
-The codebase becomes easier to maintain without becoming more complex.
-
----
-
-## Phase 2: Additional Commands
-
-### Goal
-
-Apply lessons learned from grep to other commands.
-
-### find
-
-- [ ] learn find
-- [ ] build find
-- [ ] execute generated find command
+## Candidate Commands
 
 ### curl
 
-- [ ] learn curl
-- [ ] build curl
-- [ ] execute generated curl command
+Preferred next command.
+
+Potential learn mode:
+
+```bash
+lx learn curl
+```
+
+Potential build mode:
+
+```bash
+lx build curl
+```
+
+Example generated command:
+
+```bash
+curl https://api.github.com
+```
 
 ### jq
 
-- [ ] learn jq
-- [ ] build jq
-- [ ] execute generated jq command
+Potential follow-up after curl.
 
-### Exit Criteria
+### ssh
 
-Each command supports both:
+Candidate after curl and jq.
+
+## Questions To Answer
+
+What functionality is genuinely shared?
+
+Examples:
+
+- command rendering
+- command execution
+- command breakdown formatting
+- lesson structure
+
+What functionality remains tool-specific?
+
+Examples:
+
+- prompts
+- generated commands
+- explanations
+- learning content
+
+## Exit Criteria
+
+A third command exists and architectural patterns become obvious.
+
+---
+
+# Phase 2: Learn Mode Expansion
+
+## Goal
+
+Create richer learning experiences.
+
+## Improvements
+
+- Common mistakes
+- Related commands
+- Expanded examples
+- Real-world workflows
+- Suggested next command
+
+## Example
+
+For grep:
+
+```text
+Common mistakes
+
+grep TODO .
+
+Why doesn't this work?
+
+Because . is a directory.
+
+Try:
+
+grep -r TODO .
+```
+
+## Exit Criteria
+
+Every supported command teaches:
+
+- Purpose
+- Use cases
+- Examples
+- Try It
+- Common mistakes
+- Related commands
+
+---
+
+# Phase 3: Challenge Mode
+
+## Goal
+
+Allow users to practice independently.
+
+## Example
+
+```bash
+lx challenge grep
+```
+
+Output:
+
+```text
+Find every TODO comment in the current project.
+
+What command would you use?
+```
+
+## Planned Features
+
+- Challenges
+- Hints
+- Solutions
+- Answer validation
+
+## Exit Criteria
+
+Users can practice commands through realistic scenarios.
+
+---
+
+# Phase 4: Explain Mode
+
+## Goal
+
+Help users understand commands they encounter elsewhere.
+
+Example:
+
+```bash
+lx explain 'grep -r "TODO" .'
+```
+
+Potential output:
+
+```text
+grep
+→ search text
+
+-r
+→ search recursively
+
+"TODO"
+→ search pattern
+
+.
+→ target directory
+```
+
+## Planned Features
+
+- Parse commands
+- Explain flags
+- Explain arguments
+- Explain common options
+
+## Exit Criteria
+
+Users can understand commands copied from tutorials or documentation.
+
+---
+
+# Phase 5: Extended Commands
+
+## Goal
+
+Expand beyond the initial learning set.
+
+## High Priority
+
+- curl
+- jq
+- ssh
+
+## Medium Priority
+
+- tar
+- xargs
+
+## Future
+
+- sed
+- awk
+- git
+- docker
+
+## Exit Criteria
+
+Additional commands support:
 
 ```bash
 lx learn <command>
@@ -242,171 +474,52 @@ lx build <command>
 
 ---
 
-## Phase 3: Learn Mode Expansion
+# Phase 6: Release Preparation
 
-### Goal
+## Goal
 
-Create a richer learning experience.
+Prepare lx for broader usage.
 
-### Improvements
+## Distribution
 
-- [ ] Common mistakes
-- [ ] Related commands
-- [ ] Expanded examples
-- [ ] Real-world workflows
-- [ ] Suggested next command to learn
+- Version command
+- PyPI release
 
-### Exit Criteria
+## Documentation
 
-Every supported command teaches:
+- Installation guide
+- Screenshots
+- Example sessions
 
-- Purpose
-- Use cases
-- Examples
-- Common mistakes
-- Related commands
+## Polish
 
----
+- Help output
+- Error handling
+- Consistent formatting
 
-## Phase 4: Challenge Mode
+## Exit Criteria
 
-### Goal
-
-Allow developers to practice independently.
-
-### Challenge Engine
-
-- [ ] Generate challenges
-- [ ] Provide hints
-- [ ] Validate answers
-- [ ] Reveal solutions
-
-### Supported Commands
-
-- [ ] grep
-- [ ] find
-- [ ] curl
-- [ ] jq
-
-### Exit Criteria
-
-Users can learn by solving realistic command-line tasks.
+A new developer can install lx and learn a command within minutes.
 
 ---
 
-## Phase 5: Explain Mode
+# Ideas Parking Lot
 
-### Goal
+Interesting ideas that are intentionally deferred.
 
-Help users understand commands they encounter elsewhere.
+## Future Ideas
 
-Example:
-
-```bash
-lx explain 'grep -r "TODO" .'
-```
-
-Output:
-
-```text
-grep      → search text
-
--r        → search recursively
-
-"TODO"    → search pattern
-
-.         → target directory
-```
-
-### Features
-
-- [ ] Parse commands
-- [ ] Explain flags
-- [ ] Explain arguments
-- [ ] Explain common options
-
-### Exit Criteria
-
-Users can understand commands copied from tutorials or documentation.
+- Command history
+- Learning progress
+- Learning streaks
+- AI-generated challenges
+- Interactive tutorials
+- Shell scripting lessons
+- Linux fundamentals lessons
 
 ---
 
-## Phase 6: Extended Commands
-
-### Goal
-
-Expand beyond the initial learning set.
-
-### High Priority
-
-- [ ] ssh
-- [ ] tar
-- [ ] xargs
-
-### Medium Priority
-
-- [ ] sed
-- [ ] awk
-
-### Future
-
-- [ ] git
-- [ ] docker
-
-### Exit Criteria
-
-Additional commands follow the same learn / build / challenge / explain model.
-
----
-
-## Phase 7: Release Preparation
-
-### Goal
-
-Prepare lx for broader use.
-
-### Distribution
-
-- [ ] Add pyproject.toml
-- [ ] Add version command
-- [ ] Install via pip
-- [ ] PyPI release
-
-### Documentation
-
-- [ ] Installation guide
-- [ ] Screenshots
-- [ ] Example sessions
-
-### Polish
-
-- [ ] Help output
-- [ ] Error handling
-- [ ] Consistent formatting
-
-### Exit Criteria
-
-A new developer can install lx and learn their first command within minutes.
-
----
-
-## Ideas Parking Lot
-
-Ideas that sound interesting but are intentionally deferred.
-
-### Future Ideas
-
-- [ ] Command history
-- [ ] Learning progress
-- [ ] Learning streaks
-- [ ] AI-generated challenges
-- [ ] Interactive tutorials
-- [ ] Shell scripting lessons
-- [ ] Linux fundamentals lessons
-
----
-
-## Success Definition
+# Success Definition
 
 lx succeeds when users gradually stop needing it.
 
@@ -416,12 +529,34 @@ A successful user should eventually feel comfortable typing:
 grep -r "TODO" .
 ```
 
+or:
+
+```bash
+find . -name "*.py"
+```
+
 instead of:
 
 ```bash
 lx build grep
 ```
 
+or:
+
+```bash
+lx build find
+```
+
 The goal is not dependency.
 
 The goal is confidence.
+
+---
+
+# Development Philosophy
+
+Build first.
+
+Learn from usage.
+
+Extract abstractions later.
