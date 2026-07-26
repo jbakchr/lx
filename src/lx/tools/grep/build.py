@@ -56,11 +56,9 @@ def run_command(command_parts: list[str]) -> None:
 
     console.print()
 
-    console.print(f"[bold]Executing generated command:[/bold] [italic green]{" ".join(command_parts)}[/italic green]")
+    console.print(f"[bold]Executing generated command:[/bold]")
     console.print()
 
-    console.print("[bold]Output from running grep command:[/bold]")
-    console.print()
     subprocess.run(
         command_parts,
         check=False,
