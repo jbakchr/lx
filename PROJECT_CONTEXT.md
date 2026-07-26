@@ -98,9 +98,11 @@ The ideal flow is:
 ```text
 Learn
 → Build
+→ Understand
 → Run
-→ Reflect
 ```
+
+The project should always encourage users to actively use commands rather than simply read about them.
 
 ---
 
@@ -156,7 +158,9 @@ lx applies the same philosophy to general command-line tools.
 
 ---
 
-# Most Important Discovery So Far
+# Most Important Discoveries So Far
+
+## Discovery #1
 
 Originally, the plan was to build:
 
@@ -170,19 +174,54 @@ Originally, the plan was to build:
 
 all within the first phase.
 
-During development we discovered a better approach:
+Development revealed a better approach:
 
 > Build one complete command-learning experience first.
 
-The project now follows this principle:
+This remains one of the project's most important design principles.
 
-> Build first.
->
-> Learn from usage.
->
-> Extract abstractions later.
+---
 
-This is currently one of the most important design principles in the project.
+## Discovery #2
+
+The most valuable educational output is not a technical explanation of flags.
+
+Instead, users learn best when a command is explained from a beginner's perspective.
+
+Example:
+
+Instead of:
+
+```text
+-r → search recursively
+```
+
+lx now prefers:
+
+```text
+-r
+→ search all files underneath this directory
+```
+
+The goal is understanding what a command does rather than memorizing flag definitions.
+
+---
+
+## Discovery #3
+
+Project structure should mirror user workflows.
+
+Instead of organizing around abstract systems, lx now organizes around:
+
+```text
+lx learn grep
+lx build grep
+
+lx learn find
+lx build find
+```
+
+This makes the code easier to navigate and understand.
 
 ---
 
@@ -199,7 +238,15 @@ curl
 jq
 ```
 
-However, only grep is currently implemented.
+Current status:
+
+✅ grep implemented
+
+✅ find implemented
+
+🚧 curl planned
+
+🚧 jq planned
 
 Future versions may support:
 
@@ -221,24 +268,42 @@ These remain intentionally out of scope today.
 
 lx is currently built around four conceptual modes.
 
+---
+
 ## Learn
 
 Purpose:
 
 Teach what a command does.
 
-Example:
+Examples:
 
 ```bash
 lx learn grep
 ```
 
-Should explain:
+```bash
+lx learn find
+```
+
+Learn mode should explain:
 
 - purpose
 - common use cases
 - examples
 - practical exercises
+
+Current lesson structure:
+
+```text
+Why Learn?
+
+Common Use Cases
+
+Examples
+
+Try It
+```
 
 ---
 
@@ -248,37 +313,50 @@ Purpose:
 
 Help users construct a real command interactively.
 
-Example:
+Examples:
 
 ```bash
 lx build grep
 ```
 
-Current workflow:
-
-```text
-What text are you looking for?
-
-> TODO
-
-Which file or directory should be searched?
-
-> .
-
-Search recursively?
-
-> y
+```bash
+lx build find
 ```
 
-Generates:
+A build workflow should:
+
+1. Ask simple questions
+2. Generate a real command
+3. Explain how to read the command
+4. Optionally execute the command
+
+Example:
 
 ```text
+Generated grep command
+
 👉 grep -r "TODO" .
 ```
 
-and explains the generated command before optionally executing it.
+Followed by:
 
-This is currently considered the core experience of lx.
+```text
+How To Read This Command
+
+grep
+→ the tool we are using
+
+-r
+→ search all files underneath this directory
+
+"TODO"
+→ the text we want to find
+
+.
+→ start searching from this location
+```
+
+Build mode is currently considered the core lx experience.
 
 ---
 
@@ -294,14 +372,16 @@ Example:
 lx challenge grep
 ```
 
-Not yet implemented.
+Status:
+
+🚧 Not implemented
 
 Potential features:
 
 - realistic scenarios
 - hints
 - solutions
-- increasing difficulty
+- answer validation
 
 ---
 
@@ -317,19 +397,25 @@ Example:
 lx explain 'grep -r "TODO" .'
 ```
 
-Not yet implemented.
-
-Potential output:
+Possible output:
 
 ```text
-grep       → search text
+grep
+→ search text
 
--r         → search recursively
+-r
+→ search recursively
 
-"TODO"     → search pattern
+"TODO"
+→ search pattern
 
-.          → target directory
+.
+→ target directory
 ```
+
+Status:
+
+🚧 Not implemented
 
 ---
 
@@ -339,9 +425,15 @@ grep       → search text
 
 ### Core CLI
 
+Implemented:
+
 - Typer application
 - Rich output
-- Command groups
+- Project packaging via pyproject.toml
+- Installable `lx` command
+- Command routing
+
+---
 
 ### grep Learn Mode
 
@@ -351,10 +443,12 @@ lx learn grep
 
 Implemented:
 
-- Why Learn grep?
+- Why Learn?
 - Common Use Cases
 - Examples
-- Try It exercise
+- Try It
+
+---
 
 ### grep Build Mode
 
@@ -366,16 +460,95 @@ Implemented:
 
 - Interactive prompts
 - Command generation
-- Command explanation
+- Educational command breakdown
 - Command execution
 
-Example:
+Example generated command:
 
 ```bash
 grep -r "TODO" .
 ```
 
-is generated and executed for the user.
+---
+
+### find Learn Mode
+
+```bash
+lx learn find
+```
+
+Implemented:
+
+- Why Learn?
+- Common Use Cases
+- Examples
+- Try It
+
+Example:
+
+```bash
+find . -name "*.py"
+```
+
+---
+
+### find Build Mode
+
+```bash
+lx build find
+```
+
+Implemented:
+
+- Interactive prompts
+- Command generation
+- Educational command breakdown
+- Command execution
+
+Example generated command:
+
+```bash
+find . -name "*.py"
+```
+
+---
+
+# Current Project Structure
+
+```text
+src/lx/
+├── commands/
+├── content/
+├── tools/
+│   ├── grep/
+│   │   ├── learn.py
+│   │   └── build.py
+│   │
+│   └── find/
+│       ├── learn.py
+│       └── build.py
+│
+├── ui/
+└── cli.py
+```
+
+### Structure Philosophy
+
+The structure intentionally mirrors the user experience.
+
+Example:
+
+```text
+lx learn grep
+        ↓
+tools/grep/learn.py
+
+lx build grep
+        ↓
+tools/grep/build.py
+```
+
+This design prioritizes clarity and discoverability over abstraction.
 
 ---
 
@@ -383,23 +556,33 @@ is generated and executed for the user.
 
 Current Phase:
 
-✅ Phase 1A — grep Vertical Slice Complete
+✅ grep vertical slice complete
 
-🚧 Phase 1B — Improve grep Experience
+✅ find vertical slice complete
+
+🚧 Multi-command validation
 
 Current focus:
 
-- Improve grep workflow
-- Improve formatting
-- Improve explanations
-- Improve execution output
-- Discover patterns through usage
+- Implement curl
+- Compare grep, find, and curl workflows
+- Identify real duplication
+- Discover patterns through implementation
+- Continue improving educational value
 
 Important:
 
-Do not introduce major abstractions yet.
+Do not introduce abstractions unless multiple commands clearly benefit from them.
 
-The grep workflow should mature before extracting shared architecture.
+The project should continue following:
+
+```text
+Build first.
+
+Learn from usage.
+
+Extract abstractions later.
+```
 
 ---
 
@@ -426,7 +609,7 @@ Current assumptions:
 - Typer
 - Rich
 
-The project should follow the same philosophy used in the author's other CLI projects.
+The project follows the same philosophy used throughout the author's other CLI projects.
 
 Prefer:
 
@@ -447,7 +630,7 @@ Whenever possible:
 
 - implement the simplest thing that works
 - prefer clarity over flexibility
-- delay complexity until it is truly needed
+- delay complexity until truly needed
 
 ---
 
@@ -461,10 +644,22 @@ A successful user should eventually feel comfortable typing:
 grep -r "TODO" .
 ```
 
+or:
+
+```bash
+find . -name "*.py"
+```
+
 instead of:
 
 ```bash
 lx build grep
+```
+
+or:
+
+```bash
+lx build find
 ```
 
 The objective is not dependency.
@@ -472,3 +667,21 @@ The objective is not dependency.
 The objective is understanding.
 
 The ideal outcome is that users eventually stop needing lx because they have learned the commands themselves.
+
+---
+
+# Next Major Milestone
+
+Implement a third command:
+
+```text
+curl
+```
+
+and use it to answer an important question:
+
+> What abstractions naturally emerge once lx supports multiple fundamentally different command-line tools?
+
+The goal is not to build architecture.
+
+The goal is to discover architecture through implementation.
