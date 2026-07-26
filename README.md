@@ -14,7 +14,7 @@ The goal is for developers to eventually stop needing lx because they have inter
 
 ---
 
-## Why?
+# Why?
 
 Many developers know the basics of terminal navigation:
 
@@ -49,9 +49,9 @@ Instead of teaching commands through documentation alone, lx teaches them throug
 
 ---
 
-## Philosophy
+# Philosophy
 
-### Don't hide the command.
+## Don't Hide The Command
 
 Many tools abstract complexity away.
 
@@ -73,7 +73,7 @@ The command is the lesson.
 
 ---
 
-### Learn by doing.
+## Learn By Doing
 
 Reading documentation is useful.
 
@@ -83,7 +83,7 @@ lx encourages hands-on learning with real commands on a real system.
 
 ---
 
-### Build confidence gradually.
+## Build Confidence Gradually
 
 Most command-line tools expose a huge number of options.
 
@@ -93,7 +93,9 @@ lx introduces concepts incrementally through practical examples.
 
 ---
 
-### The ultimate goal is to stop using lx.
+## Independence Over Dependency
+
+The ultimate goal is not long-term usage.
 
 Success is when a user naturally types:
 
@@ -109,74 +111,108 @@ lx build grep
 
 ---
 
-## Current Status
+# Installation
+
+Clone the repository and install in editable mode:
+
+```bash
+pip install -e .
+```
+
+After installation:
+
+```bash
+lx
+```
+
+becomes available as a terminal command.
+
+---
+
+# Current Status
 
 Current phase:
 
-✅ Vertical Slice Complete
+✅ grep learning workflow complete
+
+✅ find learning workflow complete
+
+✅ second command workflow validated
 
 Implemented:
 
 - `lx learn grep`
 - `lx build grep`
-- Real grep command generation
-- Real grep command execution
-- Command explanation
+- `lx learn find`
+- `lx build find`
+- Real command generation
+- Real command execution
+- Interactive command builders
+- Command breakdowns using "How To Read This Command"
 
 Not yet implemented:
 
-- `find`
-- `curl`
-- `jq`
+- curl
+- jq
+- ssh
 - Challenge Mode
 - Explain Mode
 
 ---
 
-## Features
+# Features
 
-### Learn
+## Learn
 
 Learn what a command does and why it matters.
+
+Examples:
 
 ```bash
 lx learn grep
 ```
 
-Example output:
+```bash
+lx learn find
+```
+
+Learn mode includes:
+
+- Why Learn?
+- Common Use Cases
+- Examples
+- Try It exercises
+
+Example:
 
 ```text
-GREP - SEARCH TEXT FOR PATTERNS.
+FIND - LOCATE FILES AND DIRECTORIES.
 
-Why Learn grep?
+Why Learn find?
 
-✓ Search source code
-✓ Find TODO comments
-✓ Investigate log files
-✓ Locate configuration values
-✓ Find references in projects
+✓ Find files by name
+✓ Locate configuration files
+✓ Search project directories
+✓ Find specific file types
 
 Common Use Cases
 
-• Find TODO comments
-• Search for error messages
-• Search log files
-• Locate code references
+• Find Python files
+• Locate config files
+• Search large projects
 ```
-
-The goal is to provide practical context before introducing command syntax.
 
 ---
 
-### Build
+## Build
 
-Build a real command interactively.
+Build real commands interactively.
+
+Example:
 
 ```bash
 lx build grep
 ```
-
-Example:
 
 ```text
 What text are you looking for?
@@ -198,85 +234,126 @@ Generated command:
 👉 grep -r "TODO" .
 ```
 
-Explanation:
+---
 
-```text
-grep        → search text
+Example:
 
--r          → search recursively
-
-"TODO"      → text to search for
-
-.           → target file or directory
+```bash
+lx build find
 ```
 
-The generated command can optionally be executed immediately.
+```text
+What file are you looking for?
+
+> *.py
+
+Which directory should be searched?
+
+> .
+```
+
+Generated command:
+
+```text
+👉 find . -name "*.py"
+```
 
 ---
 
-## Example Session
+## Command Breakdown
+
+Before execution, lx explains how to read the command.
+
+Example:
+
+```text
+How To Read This Command
+
+find
+→ the tool we are using
+
+.
+→ start searching from this location
+
+-name
+→ search by file name
+
+"*.py"
+→ file name pattern
+```
+
+The goal is not just command execution.
+
+The goal is understanding.
+
+---
+
+# Example Session
 
 ```bash
 lx build grep
 ```
 
-```text
-Build a real grep command step by step.
-```
+Output:
 
 ```text
+Build a real grep command step by step.
+
 What text are you looking for?
 
 > TODO
-```
 
-```text
 Which file or directory should be searched?
 
 > .
-```
 
-```text
 Search recursively?
 
 > y
-```
 
-```text
 Generated grep command
 
 👉 grep -r "TODO" .
+
+How To Read This Command
+
+grep
+→ the tool we are using
+
+-r
+→ search all files underneath this directory
+
+"TODO"
+→ the text we want to find
+
+.
+→ start searching from this location
 ```
 
-```text
-Run generated command?
-
-> y
-```
-
-The command is executed and the results are shown directly in the terminal.
+The generated command can then be executed directly from lx.
 
 ---
 
-## Supported Commands
+# Supported Commands
 
-### Current
+## Current
 
 - grep
-
-### Planned
-
 - find
+
+## Planned
+
 - curl
 - jq
+- ssh
 
 ---
 
-## Planned Modes
+# Planned Modes
 
 The long-term vision for lx includes four primary modes.
 
-### Learn
+## Learn
 
 Learn what a command does.
 
@@ -284,7 +361,9 @@ Learn what a command does.
 lx learn grep
 ```
 
-### Build
+---
+
+## Build
 
 Construct commands interactively.
 
@@ -292,17 +371,29 @@ Construct commands interactively.
 lx build grep
 ```
 
-### Challenge
+---
 
-Practice solving real command-line tasks.
+## Challenge
+
+Practice solving realistic command-line problems.
 
 ```bash
 lx challenge grep
 ```
 
-### Explain
+Example:
 
-Understand existing commands.
+```text
+Find every TODO comment in the current project.
+
+What command would you use?
+```
+
+---
+
+## Explain
+
+Understand commands you encounter elsewhere.
 
 ```bash
 lx explain 'grep -r "TODO" .'
@@ -310,32 +401,66 @@ lx explain 'grep -r "TODO" .'
 
 These modes are not all implemented yet.
 
-The current focus is improving Learn and Build workflows.
+The current focus remains Learn and Build.
 
 ---
 
-## Project Goals
+# Project Structure
+
+```text
+src/lx/
+├── commands/
+├── content/
+├── tools/
+│   ├── grep/
+│   │   ├── learn.py
+│   │   └── build.py
+│   │
+│   └── find/
+│       ├── learn.py
+│       └── build.py
+│
+├── ui/
+└── cli.py
+```
+
+The structure intentionally mirrors the user experience:
+
+```text
+lx learn grep
+lx build grep
+
+lx learn find
+lx build find
+```
+
+The project favors clarity and explicitness over abstractions.
+
+---
+
+# Project Goals
 
 - Make command-line tools approachable
-- Remove fear around terminal usage
+- Reduce fear around terminal usage
 - Teach through real commands
 - Encourage experimentation
 - Help developers become independent terminal users
 
 ---
 
-## Non-Goals
+# Non-Goals
 
 - Replacing existing tools
 - Hiding complexity
 - Creating proprietary syntax
 - Abstracting away commands
+- Building a command wrapper that users depend on forever
 
 ---
 
-## Inspiration
+# Inspiration
 
-lx was inspired by the idea that the best learning happens through use.
+lx is inspired by the idea that the best learning happens through use.
 
 The project takes inspiration from interactive tools that teach by generating real commands instead of hiding them.
 
@@ -345,19 +470,28 @@ A successful lx user should eventually no longer need lx.
 
 ---
 
-## Current Focus
+# Current Focus
 
 The immediate focus of the project is:
 
-- Improving the grep learning experience
-- Improving the grep command builder
-- Discovering what common patterns emerge
-- Building a solid foundation before adding additional commands
+- Learn from implementing multiple tools
+- Compare grep and find workflows
+- Discover patterns through usage
+- Avoid premature abstractions
+- Continue improving educational value
 
-Only after the grep workflow feels genuinely useful will support for:
+Future work may include:
 
-- find
 - curl
 - jq
+- ssh
+- Challenge Mode
+- Explain Mode
 
-be added.
+The project follows a simple principle:
+
+> Build first.
+>
+> Learn from usage.
+>
+> Extract abstractions later.
