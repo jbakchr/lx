@@ -15,7 +15,7 @@ The goal is to help developers gain confidence using real command-line tools thr
 
 ---
 
-# Current Phase
+# Current Status
 
 ✅ Phase 0: Project Definition
 
@@ -25,7 +25,9 @@ The goal is to help developers gain confidence using real command-line tools thr
 
 ✅ Phase 1C: find Vertical Slice
 
-🚧 Phase 1D: Multi-Command Validation (Current)
+✅ Phase 1D: Multi-Command Validation
+
+🚧 Phase 1E: Polish And Refinement (Current)
 
 ---
 
@@ -70,56 +72,33 @@ If the answer is no, reconsider the feature.
 
 # Phase 1A: grep Vertical Slice
 
-## Goal
+## Status
 
-Validate the core lx learning experience with a single command.
-
-The focus was not architecture.
-
-The focus was proving that:
-
-```bash
-lx learn grep
-```
-
-and
-
-```bash
-lx build grep
-```
-
-feel useful.
+✅ Complete
 
 ## Completed Work
 
-### Core CLI
-
-- Create Typer application
-- Add Rich output
-- Add command routing
-
 ### Learn Mode
 
-- Implement `lx learn grep`
-- Add purpose section
-- Add common use cases
-- Add examples
-- Add try-it exercise
+Implemented:
+
+```text
+lx learn grep
+```
 
 ### Build Mode
 
-- Implement `lx build grep`
-- Interactive prompts
-- Generate grep command
-- Explain generated command
-- Execute generated command
+Implemented:
 
-## Lessons Learned
+```text
+lx build grep
+```
+
+### Lessons Learned
 
 - Build before abstracting
-- Learning experience matters more than architecture
+- Educational value matters more than architecture
 - Real command execution creates immediate feedback
-- Generated commands should be visible
 
 ## Exit Criteria
 
@@ -135,31 +114,15 @@ feel useful.
 
 ## Completed Work
 
-### Formatting
-
-- Improve output readability
-- Improve section hierarchy
-- Improve command presentation
-
-### Learning Experience
-
-- Replace technical explanations with:
-  - "How To Read This Command"
-- Emphasize understanding over syntax
-- Improve generated command explanations
-
-### Project Structure
-
-- Extract command-specific logic
-- Split grep into:
-  - `learn.py`
-  - `build.py`
+- Improved formatting
+- Improved command presentation
+- Added educational command breakdowns
+- Added "How To Read This Command"
 
 ## Lessons Learned
 
 - Educational explanations outperform technical descriptions
-- Command breakdowns help users remember commands
-- Structure should mirror user workflows
+- Learning-focused explanations improve retention
 
 ## Exit Criteria
 
@@ -173,69 +136,20 @@ feel useful.
 
 ✅ Complete
 
-## Goal
-
-Validate that the lx architecture works for a second command.
-
 ## Completed Work
 
-### Learn Mode
-
 Implemented:
 
-```bash
+```text
 lx learn find
-```
-
-Includes:
-
-- Why Learn?
-- Common Use Cases
-- Examples
-- Try It
-
-### Build Mode
-
-Implemented:
-
-```bash
 lx build find
 ```
 
-Includes:
+### Lessons Learned
 
-- Interactive prompts
-- Command generation
-- Command breakdown
-- Command execution
-
-### Generated Command Example
-
-```bash
-find . -name "*.py"
-```
-
-### Command Breakdown Example
-
-```text
-find
-→ the tool we are using
-
-.
-→ start searching from this location
-
--name
-→ search by file name
-
-"*.py"
-→ file name pattern
-```
-
-## Lessons Learned
-
-- The existing architecture works well for additional tools
-- Tool-specific workflows are more important than shared abstractions
+- Existing structure works well for additional commands
 - Consistency improves learning
+- Tool-specific workflows matter more than abstractions
 
 ## Exit Criteria
 
@@ -247,126 +161,293 @@ find
 
 ## Status
 
-🚧 Current Phase
+✅ Complete
 
 ## Goal
 
-Implement a third command and observe what architecture naturally emerges.
+Validate that lx can support fundamentally different command-line tools without needing significant architectural changes.
 
-The purpose is not to build abstractions.
-
-The purpose is to discover patterns.
-
-## Candidate Commands
+## Completed Work
 
 ### curl
 
-Preferred next command.
+Implemented:
 
-Potential learn mode:
-
-```bash
+```text
 lx learn curl
-```
-
-Potential build mode:
-
-```bash
 lx build curl
 ```
 
-Example generated command:
+Teaches:
 
-```bash
-curl https://api.github.com
+```text
+Retrieve data from the internet.
 ```
 
 ### jq
 
-Potential follow-up after curl.
+Implemented:
 
-### ssh
+```text
+lx learn jq
+lx build jq
+```
 
-Candidate after curl and jq.
+Teaches:
 
-## Questions To Answer
+```text
+Explore and extract JSON data.
+```
 
-What functionality is genuinely shared?
+### Educational Progression
 
-Examples:
+The current commands now form a coherent learning path:
 
-- command rendering
-- command execution
-- command breakdown formatting
-- lesson structure
+```text
+grep
+→ search text
 
-What functionality remains tool-specific?
+find
+→ locate files
 
-Examples:
+curl
+→ retrieve data
 
-- prompts
-- generated commands
-- explanations
-- learning content
+jq
+→ extract data
+```
+
+## Lessons Learned
+
+The most surprising discovery:
+
+```text
+Very little shared architecture was needed.
+```
+
+The workflow remains:
+
+```text
+Ask questions
+↓
+Generate command
+↓
+Explain command
+↓
+Execute command
+↓
+Explain result
+```
+
+while the educational content remains highly tool-specific.
 
 ## Exit Criteria
 
-A third command exists and architectural patterns become obvious.
+✅ Complete
 
 ---
 
-# Phase 2: Learn Mode Expansion
+# Phase 1E: Polish And Refinement
+
+## Status
+
+🚧 Current Phase
 
 ## Goal
 
-Create richer learning experiences.
+Strengthen and refine the current learning experience before adding major new functionality.
 
-## Improvements
+## Current Areas
 
-- Common mistakes
-- Related commands
-- Expanded examples
-- Real-world workflows
-- Suggested next command
+### jq Build Experience
 
-## Example
+Current implementation works well but is not yet considered fully polished.
 
-For grep:
+Areas for future improvement:
+
+- Better result presentation
+- Better handling of different field types
+- Stronger educational explanations
+- More realistic JSON examples
+
+### General Consistency
+
+Continue improving:
+
+- Output formatting
+- Visual consistency
+- Section hierarchy
+- Command explanations
+- Result explanations
+
+## Exit Criteria
+
+Current command set feels polished and internally consistent.
+
+---
+
+# Phase 2: Command Combinations
+
+## Goal
+
+Teach how real command-line tools work together.
+
+Many powerful terminal workflows combine multiple commands.
+
+Example:
+
+```bash
+curl https://jsonplaceholder.typicode.com/todos/1 | jq .title
+```
+
+### Potential Command
+
+```bash
+lx combine
+```
+
+or:
+
+```bash
+lx combine curl jq
+```
+
+### Educational Goals
+
+Teach:
 
 ```text
-Common mistakes
+pipes (|)
+```
 
-grep TODO .
+and:
 
-Why doesn't this work?
+```text
+tool composition
+```
 
-Because . is a directory.
+Example:
 
-Try:
+```text
+curl
+→ retrieve JSON
 
-grep -r TODO .
+|
+
+→ pass output to another command
+
+jq
+→ extract a field
+```
+
+## Candidate Combinations
+
+```bash
+curl ... | jq .title
+```
+
+```bash
+find . -name "*.py" | grep test
+```
+
+```bash
+find . -name "*.log" | xargs grep ERROR
 ```
 
 ## Exit Criteria
 
-Every supported command teaches:
-
-- Purpose
-- Use cases
-- Examples
-- Try It
-- Common mistakes
-- Related commands
+Users understand that command-line power often comes from combining tools.
 
 ---
 
-# Phase 3: Challenge Mode
+# Phase 3: Command Discovery
+
+## Goal
+
+Help users discover useful command patterns and flags.
+
+## Potential Command
+
+```bash
+lx flags <tool>
+```
+
+Example:
+
+```bash
+lx flags grep
+```
+
+### Open Question
+
+Should this focus on:
+
+```text
+Flags
+```
+
+or:
+
+```text
+Common command patterns
+```
+
+?
+
+This still needs to be defined.
+
+Current concern:
+
+A flags-focused command may accidentally become documentation rather than learning.
+
+Possible alternative:
+
+```bash
+lx recipes grep
+```
+
+or:
+
+```bash
+lx patterns grep
+```
+
+### Questions To Answer
+
+What is more useful?
+
+```text
+-r
+-i
+-n
+-c
+```
+
+or:
+
+```text
+Find TODO comments
+
+Show line numbers
+
+Ignore case
+```
+
+This remains intentionally undecided.
+
+## Exit Criteria
+
+Users can discover useful command variations without reading a man page.
+
+---
+
+# Phase 4: Challenge Mode
 
 ## Goal
 
 Allow users to practice independently.
 
-## Example
+Example:
 
 ```bash
 lx challenge grep
@@ -375,12 +456,13 @@ lx challenge grep
 Output:
 
 ```text
-Find every TODO comment in the current project.
+Find every TODO comment
+inside the current project.
 
 What command would you use?
 ```
 
-## Planned Features
+### Planned Features
 
 - Challenges
 - Hints
@@ -393,7 +475,7 @@ Users can practice commands through realistic scenarios.
 
 ---
 
-# Phase 4: Explain Mode
+# Phase 5: Explain Mode
 
 ## Goal
 
@@ -405,76 +487,83 @@ Example:
 lx explain 'grep -r "TODO" .'
 ```
 
-Potential output:
+### Example Output
 
 ```text
 grep
 → search text
 
 -r
-→ search recursively
+→ search all files underneath this directory
 
 "TODO"
-→ search pattern
+→ the text we want to find
 
 .
-→ target directory
+→ start searching here
 ```
 
-## Planned Features
+### Planned Features
 
-- Parse commands
 - Explain flags
 - Explain arguments
-- Explain common options
+- Explain pipes
+- Explain common command structures
 
 ## Exit Criteria
 
-Users can understand commands copied from tutorials or documentation.
+Users can paste commands and understand how to read them.
 
 ---
 
-# Phase 5: Extended Commands
+# Phase 6: Extended Commands
 
 ## Goal
 
-Expand beyond the initial learning set.
+Continue expanding the learning library.
 
 ## High Priority
 
-- curl
-- jq
-- ssh
+```text
+ssh
+```
+
+Reason:
+
+Introduces remote systems and connectivity.
 
 ## Medium Priority
 
-- tar
-- xargs
+```text
+tar
+xargs
+```
+
+Reason:
+
+Natural follow-ups to existing workflows.
 
 ## Future
 
-- sed
-- awk
-- git
-- docker
+```text
+sed
+awk
+git
+docker
+```
 
 ## Exit Criteria
 
 Additional commands support:
 
-```bash
+```text
 lx learn <command>
-```
-
-and
-
-```bash
 lx build <command>
 ```
 
 ---
 
-# Phase 6: Release Preparation
+# Phase 7: Release Preparation
 
 ## Goal
 
@@ -505,17 +594,16 @@ A new developer can install lx and learn a command within minutes.
 
 # Ideas Parking Lot
 
-Interesting ideas that are intentionally deferred.
+Interesting ideas intentionally deferred.
 
 ## Future Ideas
 
-- Command history
 - Learning progress
 - Learning streaks
 - AI-generated challenges
-- Interactive tutorials
 - Shell scripting lessons
 - Linux fundamentals lessons
+- Curated learning paths
 
 ---
 
@@ -532,7 +620,7 @@ grep -r "TODO" .
 or:
 
 ```bash
-find . -name "*.py"
+curl https://jsonplaceholder.typicode.com/todos/1 | jq .title
 ```
 
 instead of:
@@ -544,7 +632,7 @@ lx build grep
 or:
 
 ```bash
-lx build find
+lx build jq
 ```
 
 The goal is not dependency.
