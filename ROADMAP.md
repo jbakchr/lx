@@ -1,6 +1,6 @@
 # lx - ROADMAP
 
-> Learn command-line tools by using real commands.
+> _**Learn command-line tools by using real commands.**_
 
 This roadmap intentionally prioritizes:
 
@@ -15,7 +15,7 @@ The goal is to help developers gain confidence using real command-line tools thr
 
 ---
 
-# Current Status
+## Current Status
 
 ✅ Phase 0: Project Definition
 
@@ -31,7 +31,7 @@ The goal is to help developers gain confidence using real command-line tools thr
 
 ---
 
-# Guiding Principles
+## Guiding Principles
 
 When making decisions, prefer:
 
@@ -49,13 +49,13 @@ If the answer is no, reconsider the feature.
 
 ---
 
-# Phase 0: Project Definition
+## Phase 0: Project Definition
 
-## Status
+### Status
 
 ✅ Complete
 
-## Completed Work
+### Completed Work
 
 - Define project purpose
 - Define philosophy
@@ -64,21 +64,21 @@ If the answer is no, reconsider the feature.
 - Create PROJECT_CONTEXT
 - Create repository
 
-## Exit Criteria
+### Exit Criteria
 
 ✅ Complete
 
 ---
 
-# Phase 1A: grep Vertical Slice
+## Phase 1A: grep Vertical Slice
 
-## Status
+### Status
 
 ✅ Complete
 
-## Completed Work
+### Completed Work
 
-### Learn Mode
+#### Learn Mode
 
 Implemented:
 
@@ -86,7 +86,7 @@ Implemented:
 lx learn grep
 ```
 
-### Build Mode
+#### Build Mode
 
 Implemented:
 
@@ -94,49 +94,49 @@ Implemented:
 lx build grep
 ```
 
-### Lessons Learned
+#### Lessons Learned
 
 - Build before abstracting
 - Educational value matters more than architecture
 - Real command execution creates immediate feedback
 
-## Exit Criteria
+### Exit Criteria
 
 ✅ Complete
 
 ---
 
-# Phase 1B: grep Experience Improvements
+## Phase 1B: grep Experience Improvements
 
-## Status
+### Status
 
 ✅ Complete
 
-## Completed Work
+### Completed Work
 
 - Improved formatting
 - Improved command presentation
 - Added educational command breakdowns
 - Added "How To Read This Command"
 
-## Lessons Learned
+### Lessons Learned
 
 - Educational explanations outperform technical descriptions
 - Learning-focused explanations improve retention
 
-## Exit Criteria
+### Exit Criteria
 
 ✅ Complete
 
 ---
 
-# Phase 1C: find Vertical Slice
+## Phase 1C: find Vertical Slice
 
-## Status
+### Status
 
 ✅ Complete
 
-## Completed Work
+### Completed Work
 
 Implemented:
 
@@ -145,31 +145,31 @@ lx learn find
 lx build find
 ```
 
-### Lessons Learned
+#### Lessons Learned
 
 - Existing structure works well for additional commands
 - Consistency improves learning
 - Tool-specific workflows matter more than abstractions
 
-## Exit Criteria
+### Exit Criteria
 
 ✅ Complete
 
 ---
 
-# Phase 1D: Multi-Command Validation
+## Phase 1D: Multi-Command Validation
 
-## Status
+### Status
 
 ✅ Complete
 
-## Goal
+### Goal
 
 Validate that lx can support fundamentally different command-line tools without needing significant architectural changes.
 
-## Completed Work
+### Completed Work
 
-### curl
+#### curl
 
 Implemented:
 
@@ -184,7 +184,7 @@ Teaches:
 Retrieve data from the internet.
 ```
 
-### jq
+#### jq
 
 Implemented:
 
@@ -199,7 +199,7 @@ Teaches:
 Explore and extract JSON data.
 ```
 
-### Educational Progression
+#### Educational Progression
 
 The current commands now form a coherent learning path:
 
@@ -217,7 +217,7 @@ jq
 → extract data
 ```
 
-## Lessons Learned
+### Lessons Learned
 
 The most surprising discovery:
 
@@ -241,25 +241,25 @@ Explain result
 
 while the educational content remains highly tool-specific.
 
-## Exit Criteria
+### Exit Criteria
 
 ✅ Complete
 
 ---
 
-# Phase 1E: Polish And Refinement
+## Phase 1E: Polish And Refinement
 
-## Status
+### Status
 
 🚧 Current Phase
 
-## Goal
+### Goal
 
 Strengthen and refine the current learning experience before adding major new functionality.
 
-## Current Areas
+### Current Areas
 
-### jq Build Experience
+#### jq Build Experience
 
 Current implementation works well but is not yet considered fully polished.
 
@@ -270,7 +270,7 @@ Areas for future improvement:
 - Stronger educational explanations
 - More realistic JSON examples
 
-### General Consistency
+#### General Consistency
 
 Continue improving:
 
@@ -280,15 +280,15 @@ Continue improving:
 - Command explanations
 - Result explanations
 
-## Exit Criteria
+### Exit Criteria
 
 Current command set feels polished and internally consistent.
 
 ---
 
-# Phase 2: Command Combinations
+## Phase 2: Command Combinations
 
-## Goal
+### Goal
 
 Teach how real command-line tools work together.
 
@@ -300,7 +300,7 @@ Example:
 curl https://jsonplaceholder.typicode.com/todos/1 | jq .title
 ```
 
-### Potential Command
+#### Potential Command
 
 ```bash
 lx combine
@@ -312,7 +312,7 @@ or:
 lx combine curl jq
 ```
 
-### Educational Goals
+#### Educational Goals
 
 Teach:
 
@@ -340,7 +340,7 @@ jq
 → extract a field
 ```
 
-## Candidate Combinations
+### Candidate Combinations
 
 ```bash
 curl ... | jq .title
@@ -354,19 +354,19 @@ find . -name "*.py" | grep test
 find . -name "*.log" | xargs grep ERROR
 ```
 
-## Exit Criteria
+### Exit Criteria
 
 Users understand that command-line power often comes from combining tools.
 
 ---
 
-# Phase 3: Command Discovery
+## Phase 3: Command Discovery
 
-## Goal
+### Goal
 
 Help users discover useful command patterns and flags.
 
-## Potential Command
+### Potential Command
 
 ```bash
 lx flags <tool>
@@ -378,7 +378,7 @@ Example:
 lx flags grep
 ```
 
-### Open Question
+#### Open Question
 
 Should this focus on:
 
@@ -412,7 +412,7 @@ or:
 lx patterns grep
 ```
 
-### Questions To Answer
+#### Questions To Answer
 
 What is more useful?
 
@@ -435,13 +435,13 @@ Ignore case
 
 This remains intentionally undecided.
 
-## Exit Criteria
+### Exit Criteria
 
 Users can discover useful command variations without reading a man page.
 
 ---
 
-# Phase 4: Challenge Mode
+## Phase 4: Challenge Mode
 
 ## Goal
 
@@ -462,22 +462,22 @@ inside the current project.
 What command would you use?
 ```
 
-### Planned Features
+#### Planned Features
 
 - Challenges
 - Hints
 - Solutions
 - Answer validation
 
-## Exit Criteria
+### Exit Criteria
 
 Users can practice commands through realistic scenarios.
 
 ---
 
-# Phase 5: Explain Mode
+## Phase 5: Explain Mode
 
-## Goal
+### Goal
 
 Help users understand commands they encounter elsewhere.
 
@@ -487,7 +487,7 @@ Example:
 lx explain 'grep -r "TODO" .'
 ```
 
-### Example Output
+#### Example Output
 
 ```text
 grep
@@ -503,26 +503,26 @@ grep
 → start searching here
 ```
 
-### Planned Features
+#### Planned Features
 
 - Explain flags
 - Explain arguments
 - Explain pipes
 - Explain common command structures
 
-## Exit Criteria
+### Exit Criteria
 
 Users can paste commands and understand how to read them.
 
 ---
 
-# Phase 6: Extended Commands
+## Phase 6: Extended Commands
 
-## Goal
+### Goal
 
 Continue expanding the learning library.
 
-## High Priority
+### High Priority
 
 ```text
 ssh
@@ -532,7 +532,7 @@ Reason:
 
 Introduces remote systems and connectivity.
 
-## Medium Priority
+### Medium Priority
 
 ```text
 tar
@@ -543,7 +543,7 @@ Reason:
 
 Natural follow-ups to existing workflows.
 
-## Future
+### Future
 
 ```text
 sed
@@ -552,7 +552,7 @@ git
 docker
 ```
 
-## Exit Criteria
+### Exit Criteria
 
 Additional commands support:
 
@@ -563,40 +563,40 @@ lx build <command>
 
 ---
 
-# Phase 7: Release Preparation
+## Phase 7: Release Preparation
 
-## Goal
+### Goal
 
 Prepare lx for broader usage.
 
-## Distribution
+### Distribution
 
 - Version command
 - PyPI release
 
-## Documentation
+### Documentation
 
 - Installation guide
 - Screenshots
 - Example sessions
 
-## Polish
+### Polish
 
 - Help output
 - Error handling
 - Consistent formatting
 
-## Exit Criteria
+### Exit Criteria
 
 A new developer can install lx and learn a command within minutes.
 
 ---
 
-# Ideas Parking Lot
+## Ideas Parking Lot
 
 Interesting ideas intentionally deferred.
 
-## Future Ideas
+### Future Ideas
 
 - Learning progress
 - Learning streaks
@@ -607,7 +607,7 @@ Interesting ideas intentionally deferred.
 
 ---
 
-# Success Definition
+## Success Definition
 
 lx succeeds when users gradually stop needing it.
 
@@ -641,7 +641,7 @@ The goal is confidence.
 
 ---
 
-# Development Philosophy
+## Development Philosophy
 
 Build first.
 
