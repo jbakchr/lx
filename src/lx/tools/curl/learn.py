@@ -9,7 +9,6 @@ from lx.ui.console import (
 def display_intro():
     separator()
     page_header("CURL", "RETRIEVE DATA FROM THE INTERNET.")
-    section_header("[bold]CURL[/bold] [italic]- RETRIEVE DATA FROM THE INTERNET.[/italic]")
 
 
 def learn_section():
