@@ -37,11 +37,16 @@ def use_cases_section() -> None:
 
     section_header("[bold]Common Use Cases[/bold]")
 
-    print("• Find TODO comments")
-    print("• Search for error messages")
-    print("• Search log files")
-    print("• Locate code references")
+    print("  • Find TODO comments")
+    print()
 
+    print("  • Search for error messages")
+    print()
+
+    print("  • Search log files")
+    print()
+
+    print("  • Locate code references")
     print()
 
 
