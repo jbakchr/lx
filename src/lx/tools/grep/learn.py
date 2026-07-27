@@ -1,3 +1,8 @@
+from lx.ui.console import (
+    page_header,
+    separator,
+)
+
 from lx.content.grep import (
     examples_section,
     learn_section,
@@ -5,15 +10,9 @@ from lx.content.grep import (
     use_cases_section,
 )
 
-from lx.ui.console import (
-    section_header,
-    separator,
-)
-
 def learn() -> None:
     separator()
-
-    section_header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]")
+    page_header("GREP", "SEARCH TEXT FOR PATTERNS.")
 
     learn_section()
     use_cases_section()
