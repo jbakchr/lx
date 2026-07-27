@@ -4,6 +4,7 @@ from lx.ui.console import (
     page_header,
     section_header,
     separator,
+    example
 )
 
 def display_intro():
@@ -46,15 +47,11 @@ def examples_section():
 
     section_header("Examples")
 
-    print("""  curl https://jsonplaceholder.typicode.com/todos/1
-    [italic]→ retrieve JSON data[/italic]
+    example("curl https://jsonplaceholder.typicode.com/todos/1", "retrieve JSON data")
 
-  curl https://api.github.com
-    [italic]→ explore an API[/italic]
+    example("curl https://api.github.com", "explore an API")
 
-  curl https://example.com
-    [italic]→ retrieve a web page[/italic]
-""")
+    example("curl https://example.com", "retrieve a web page")
 
 
 def try_it_section():

@@ -18,3 +18,9 @@ def section_header(text: str) -> None:
     console.print()
     console.print(f"[bold]{text}[/bold]")
     console.print()
+
+
+def example(example: str, explanation: str) -> None:
+    console.print(f"  [cyan]{example}[/cyan]")
+    console.print(f"   [italic]→ {explanation}[/italic]")
+    console.print()
