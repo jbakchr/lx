@@ -16,5 +16,5 @@ def page_header(command_name: str, command_desc: str) -> None:
 
 def section_header(text: str) -> None:
     console.print()
-    console.print(text)
+    console.print(f"[bold]{text}[/bold]")
     console.print()

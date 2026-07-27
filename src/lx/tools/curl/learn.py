@@ -14,7 +14,7 @@ def display_intro():
 def learn_section():
     separator()
 
-    section_header("[bold]Why Learn?[/bold]")
+    section_header("Why Learn?")
     
     print("""  [cyan]curl[/cyan] is one of the most common command-line tools for working with websites, APIs, and online services.
     
@@ -29,7 +29,7 @@ def learn_section():
 def use_cases_section():
     separator()
 
-    section_header("[bold]Common Use Cases[/bold]")
+    section_header("Common Use Cases")
 
     print("""  • Check what data an API returns
 
@@ -44,7 +44,7 @@ def use_cases_section():
 def examples_section():
     separator()
 
-    section_header("[bold]Examples[/bold]")
+    section_header("Examples")
 
     print("""  curl https://jsonplaceholder.typicode.com/todos/1
     [italic]→ retrieve JSON data[/italic]
@@ -60,7 +60,7 @@ def examples_section():
 def try_it_section():
     separator()
 
-    section_header("[bold]Try It[/bold]")
+    section_header("Try It")
 
     print("""  Run:
 
