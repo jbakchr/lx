@@ -8,7 +8,7 @@ from lx.tools.curl.learn import learn as learn_curl
 from lx.tools.jq.learn import learn as learn_jq
 
 
-def learn(tool: Annotated[Literal["grep", "find", "curl", "jq"], typer.Argument()]) -> None:
+def learn(tool: Annotated[Literal["grep", "find", "curl", "jq"], typer.Argument(help="tool name to learn about")]) -> None:
     """
     Learn a command-line tool.
     """
