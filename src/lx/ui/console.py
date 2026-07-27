@@ -8,7 +8,7 @@ def separator() -> None:
     console.print(Rule())
 
 
-def header(
+def section_header(
     text: str,
 ) -> None:
     console.print()

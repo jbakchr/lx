@@ -6,14 +6,14 @@ from rich.prompt import Prompt
 
 from lx.ui.console import (
     console,
-    header,
+    section_header,
     separator,
 )
 
 
 def display_intro():
     separator()
-    header("[bold]Build a real curl command step by step.[/bold]")
+    section_header("[bold]Build a real curl command step by step.[/bold]")
     separator()
 
 
