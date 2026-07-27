@@ -4,6 +4,7 @@ from lx.ui.console import (
     page_header,
     section_header,
     separator,
+    example
 )
 
 
@@ -41,17 +42,13 @@ def use_cases_section():
 def examples_section():
     separator()
 
-    section_header("[bold]Examples[/bold]")
+    section_header("Examples")
 
-    print("""  [bold cyan]jq .title[/bold cyan]
-    [italic]→ extract the title field[/italic]
+    example("jq .title", "extract the title field")
 
-  [bold cyan]jq .completed[/bold cyan]
-    [italic]→ extract the completed field[/italic]
+    example("jq .completed", "extract the completed field")
 
-  [bold cyan]jq .[/bold cyan]
-    [italic]→ display formatted JSON[/italic]
-""")
+    example("jq .", "display formatted JSON")
 
 
 def try_it_section():

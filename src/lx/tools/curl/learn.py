@@ -7,6 +7,7 @@ from lx.ui.console import (
     example
 )
 
+
 def display_intro():
     separator()
     page_header("CURL", "RETRIEVE DATA FROM THE INTERNET.")
@@ -72,6 +73,7 @@ def try_it_section():
 
 
 def learn() -> None:
+    
     display_intro()
 
     learn_section()

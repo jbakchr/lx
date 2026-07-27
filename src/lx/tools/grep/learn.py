@@ -1,5 +1,6 @@
+from rich import print
+
 from lx.ui.console import (
-    console,
     page_header,
     section_header,
     separator,
@@ -17,13 +18,13 @@ def learn_section() -> None:
 
     section_header("[bold]Why Learn grep?[/bold]")
 
-    console.print("✓ Search source code")
-    console.print("✓ Find TODO comments")
-    console.print("✓ Investigate log files")
-    console.print("✓ Locate configuration values")
-    console.print("✓ Find references in projects")
+    print("✓ Search source code")
+    print("✓ Find TODO comments")
+    print("✓ Investigate log files")
+    print("✓ Locate configuration values")
+    print("✓ Find references in projects")
 
-    console.print()
+    print()
 
 
 def use_cases_section() -> None:
@@ -31,12 +32,12 @@ def use_cases_section() -> None:
 
     section_header("[bold]Common Use Cases[/bold]")
 
-    console.print("• Find TODO comments")
-    console.print("• Search for error messages")
-    console.print("• Search log files")
-    console.print("• Locate code references")
+    print("• Find TODO comments")
+    print("• Search for error messages")
+    print("• Search log files")
+    print("• Locate code references")
 
-    console.print()
+    print()
 
 
 def examples_section() -> None:
@@ -56,20 +57,20 @@ def try_it_section() -> None:
 
     section_header("[bold]Try It[/bold]")
 
-    console.print(
+    print(
         '[cyan]  echo "TODO: Fix bug" > demo.txt[/cyan]'
     )
-    console.print()
+    print()
 
-    console.print(
+    print(
         '[cyan]  grep "TODO" demo.txt[/cyan]'
     )
-    console.print()
+    print()
 
-    console.print(
+    print(
         "[italic]  → You should see the matching line printed to the terminal.[/italic]"
     )
-    console.print()
+    print()
 
 
 def learn() -> None:

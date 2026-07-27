@@ -1,8 +1,10 @@
+from rich import print
+
 from lx.ui.console import (
     page_header,
     section_header,
     separator,
-    console,
+    example
 )
 
 
@@ -16,23 +18,23 @@ def learn_section():
 
     section_header("Why Learn find?")
 
-    console.print(
+    print(
         "✓ Find files by name"
     )
 
-    console.print(
+    print(
         "✓ Locate configuration files"
     )
 
-    console.print(
+    print(
         "✓ Search project directories"
     )
 
-    console.print(
+    print(
         "✓ Find specific file types"
     )
 
-    console.print()
+    print()
 
 
 def use_cases_section():
@@ -40,19 +42,19 @@ def use_cases_section():
 
     section_header("Common Use Cases")
 
-    console.print(
+    print(
         "• Find Python files"
     )
 
-    console.print(
+    print(
         "• Locate config files"
     )
 
-    console.print(
+    print(
         "• Search large projects"
     )
 
-    console.print()
+    print()
 
 
 def examples_section():
@@ -60,11 +62,9 @@ def examples_section():
 
     section_header("Examples")
 
-    console.print('  [bold cyan]find . -name "*.py"[/bold cyan]')
+    example("find . -name \"*.py\"", "Find all Python files.")
 
-    console.print("    [italic]→ Find all Python files.[/italic]")
-
-    console.print()
+    print()
 
 
 def try_it_section():
@@ -72,28 +72,29 @@ def try_it_section():
 
     section_header("Try It")
 
-    console.print("  [bold cyan]touch demo.txt[/bold cyan]")
+    print("  [bold cyan]touch demo.txt[/bold cyan]")
 
-    console.print()
+    print()
 
-    console.print("  [bold cyan]find . -name \"demo.txt\"[/bold cyan]")
+    print("  [bold cyan]find . -name \"demo.txt\"[/bold cyan]")
 
-    console.print()
+    print()
 
-    console.print("[italic]   → Find one specific file[italic]")
+    print("[italic]    → Find one specific file[italic]")
 
-    console.print()
+    print()
 
-    console.print("  [bold cyan]find . -name \"*.py\"[/bold cyan]")
+    print("  [bold cyan]find . -name \"*.py\"[/bold cyan]")
 
-    console.print()
+    print()
 
-    console.print("[italic]    → Find all Python files[/italic]")
+    print("[italic]    → Find all Python files[/italic]")
 
-    console.print()
+    print()
 
 
 def learn() -> None:
+    
     display_intro()
 
     learn_section()
