@@ -16,6 +16,12 @@ class FindCommand:
     file_pattern: str
 
 
+def display_intro():
+    separator()
+
+    section_header("[bold]Build a real find command step by step.[/bold]")
+
+
 def show_generated_command(command: str) -> None:
     separator()
 
@@ -67,11 +73,17 @@ def show_how_to_read_command(
 
     console.print()
 
-
-def run_command(command_parts: list[str]) -> None:
     separator()
 
     console.print()
+
+
+def run_command(command_parts: list[str]) -> None:
+
+    console.print()
+    separator()
+    console.print()
+
     console.print(
         "[bold]Executing generated command:[/bold]"
     )
@@ -84,6 +96,7 @@ def run_command(command_parts: list[str]) -> None:
 
 
 def collect_build_inputs() -> FindCommand:
+    separator()
     console.print()
 
     file_pattern = typer.prompt(
@@ -125,38 +138,22 @@ def create_display_command(
 
 
 def build() -> None:
-    separator()
-
-    section_header(
-        "[bold]Build a real find command step by step.[/bold]"
-    )
-
-    separator()
+    display_intro()
 
     find_command = collect_build_inputs()
 
-    command_parts = create_command_parts(
-        find_command
-    )
+    command_parts = create_command_parts(find_command)
 
-    command_string = create_display_command(
-        find_command
-    )
+    command_string = create_display_command(find_command)
 
-    show_generated_command(
-        command_string
-    )
+    show_generated_command(command_string)
 
-    show_how_to_read_command(
-        find_command
-    )
+    show_how_to_read_command(find_command)
 
     should_run = typer.confirm(
         "Run generated command?",
         default=True,
     )
-
-    console.print()
 
     if should_run:
         run_command(command_parts)
