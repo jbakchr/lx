@@ -16,14 +16,19 @@ def display_intro():
 def learn_section() -> None:
     separator()
 
-    section_header("[bold]Why Learn grep?[/bold]")
+    section_header("[bold]Why Learn?[/bold]")
 
-    print("✓ Search source code")
-    print("✓ Find TODO comments")
-    print("✓ Investigate log files")
-    print("✓ Locate configuration values")
-    print("✓ Find references in projects")
+    print("  [cyan]grep[/cyan] is one of the most common tools developers use to search for text.")
+    print()
 
+    print("""  When working in unfamiliar codebases, [cyan]grep[/cyan] can help you quickly find TODO comments,
+  error messages, configuration values, and references to specific functions or files.""")
+    print()
+
+    print("  Instead of manually browsing through files, [cyan]grep[/cyan] lets you search for exactly what you are looking for.")
+    print()    
+
+    print("  Learning [cyan]grep[/cyan] helps you investigate projects faster and navigate large codebases with confidence.")
     print()
 
 
