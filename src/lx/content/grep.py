@@ -1,11 +1,11 @@
 from lx.ui.console import console
-from lx.ui.console import header
+from lx.ui.console import section_header
 from lx.ui.console import separator
 
 def learn_section() -> None:
     separator()
 
-    header("[bold]Why Learn grep?[/bold]")
+    section_header("[bold]Why Learn grep?[/bold]")
 
     console.print("✓ Search source code")
     console.print("✓ Find TODO comments")
@@ -15,7 +15,7 @@ def learn_section() -> None:
 
 
 def use_cases_section() -> None:
-    header("[bold]Common Use Cases[/bold]")
+    section_header("[bold]Common Use Cases[/bold]")
 
     console.print("• Find TODO comments")
     console.print("• Search for error messages")
@@ -28,7 +28,7 @@ def use_cases_section() -> None:
 def examples_section() -> None:
     separator()
 
-    header("[bold]Examples[/bold]")
+    section_header("[bold]Examples[/bold]")
 
     console.print('[bold cyan]grep "TODO" *.py[/bold cyan]')
     console.print()
@@ -54,7 +54,7 @@ def examples_section() -> None:
 def try_it_section() -> None:
     separator()
 
-    header("[bold]Try It[/bold]")
+    section_header("[bold]Try It[/bold]")
 
     console.print(
         '[bold cyan]echo "TODO: Fix bug" > demo.txt[/bold cyan]'

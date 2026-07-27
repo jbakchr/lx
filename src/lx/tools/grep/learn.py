@@ -6,14 +6,14 @@ from lx.content.grep import (
 )
 
 from lx.ui.console import (
-    header,
+    section_header,
     separator,
 )
 
 def learn() -> None:
     separator()
 
-    header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]")
+    section_header("[bold]GREP[/bold] - [italic]SEARCH TEXT FOR PATTERNS.[/italic]")
 
     learn_section()
     use_cases_section()

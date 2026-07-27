@@ -5,7 +5,7 @@ import typer
 
 from lx.ui.console import (
     console,
-    header,
+    section_header,
     separator,
 )
 
@@ -19,7 +19,7 @@ class FindCommand:
 def show_generated_command(command: str) -> None:
     separator()
 
-    header("[bold]Generated find command[/bold]")
+    section_header("[bold]Generated find command[/bold]")
 
     console.print(
         f"[bold green]👉  {command}[/bold green]"
@@ -33,7 +33,7 @@ def show_how_to_read_command(
 ) -> None:
     separator()
 
-    header("[bold]How To Read This Command[/bold]")
+    section_header("[bold]How To Read This Command[/bold]")
 
     console.print("find")
     console.print(
@@ -127,7 +127,7 @@ def create_display_command(
 def build() -> None:
     separator()
 
-    header(
+    section_header(
         "[bold]Build a real find command step by step.[/bold]"
     )
 

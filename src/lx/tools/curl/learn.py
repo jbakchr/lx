@@ -1,12 +1,14 @@
 from rich import print
 
 from lx.ui.console import (
+    page_header,
     section_header,
     separator,
 )
 
 def display_intro():
     separator()
+    page_header("CURL", "RETRIEVE DATA FROM THE INTERNET.")
     section_header("[bold]CURL[/bold] [italic]- RETRIEVE DATA FROM THE INTERNET.[/italic]")
 
 

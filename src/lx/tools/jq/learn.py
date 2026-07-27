@@ -1,19 +1,19 @@
 from rich import print
 
 from lx.ui.console import (
-    header,
+    section_header,
     separator,
 )
 
 
 def learn() -> None:
     separator()
-    header(
+    section_header(
         "[bold]JQ[/bold] [italic]- EXPLORE AND EXTRACT JSON DATA.[/italic]"
     )
     separator()
 
-    header("[bold]Why Learn?[/bold]")
+    section_header("[bold]Why Learn?[/bold]")
 
     print("""  [cyan]jq[/cyan] helps you work with JSON data from the terminal.
 
@@ -22,7 +22,7 @@ def learn() -> None:
 
     separator()
 
-    header("[bold]Common Use Cases[/bold]")
+    section_header("[bold]Common Use Cases[/bold]")
 
     print("""  • Show a single value from JSON
 
@@ -35,7 +35,7 @@ def learn() -> None:
 
     separator()
 
-    header("[bold]Examples[/bold]")
+    section_header("[bold]Examples[/bold]")
 
     print("""  [bold cyan]jq .title[/bold cyan]
     → extract the title field
@@ -49,7 +49,7 @@ def learn() -> None:
 
     separator()
 
-    header("[bold]Try It[/bold]")
+    section_header("[bold]Try It[/bold]")
 
     print("""  First retrieve some JSON:
 

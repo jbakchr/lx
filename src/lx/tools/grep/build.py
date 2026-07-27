@@ -5,7 +5,7 @@ import typer
 
 from lx.ui.console import (
     console,
-    header,
+    section_header,
     separator,
 )
 
@@ -19,14 +19,14 @@ class GrepCommand:
 
 def display_intro():
     separator()
-    header("[bold]Build a real grep command step by step.[/bold]")
+    section_header("[bold]Build a real grep command step by step.[/bold]")
     separator()
 
 
 def show_generated_command(command: str) -> None:
     separator()
 
-    header("[bold]Generated grep command[/bold]")
+    section_header("[bold]Generated grep command[/bold]")
 
     console.print(
         f"[bold green]👉  {command}[/bold green]"
@@ -38,7 +38,7 @@ def show_generated_command(command: str) -> None:
 def show_how_to_read_command(grep_command: GrepCommand) -> None:
     separator()
 
-    header("[bold]How To Read This Command[/bold]")
+    section_header("[bold]How To Read This Command[/bold]")
 
     console.print("  grep")
     console.print("    [italic]→ the tool we are using[/italic]")

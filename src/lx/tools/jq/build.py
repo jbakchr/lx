@@ -6,7 +6,7 @@ from rich.prompt import Prompt
 
 from lx.ui.console import (
     console,
-    header,
+    section_header,
     separator,
 )
 
@@ -21,7 +21,7 @@ EXAMPLE_JSON = {
 
 def build() -> None:
     separator()
-    header("[bold]Build a real jq command step by step.[/bold]")
+    section_header("[bold]Build a real jq command step by step.[/bold]")
     separator()
 
     console.print()

@@ -1,5 +1,5 @@
 from lx.ui.console import (
-    header,
+    section_header,
     separator,
     console,
 )
@@ -8,14 +8,14 @@ from lx.ui.console import (
 def learn() -> None:
     separator()
 
-    header(
+    section_header(
         "[bold]FIND[/bold] - "
         "[italic]LOCATE FILES AND DIRECTORIES.[/italic]"
     )
 
     separator()
 
-    header("[bold]Why Learn find?[/bold]")
+    section_header("[bold]Why Learn find?[/bold]")
 
     console.print(
         "✓ Find files by name"
@@ -57,7 +57,7 @@ def learn() -> None:
 
     separator()
 
-    header("[bold]Examples[/bold]")
+    section_header("[bold]Examples[/bold]")
 
     console.print(
         '[bold cyan]find . -name "*.py"[/bold cyan]'
@@ -72,7 +72,7 @@ def learn() -> None:
     console.print()
     separator()
 
-    header("[bold]Try It[/bold]")
+    section_header("[bold]Try It[/bold]")
 
     console.print("[bold cyan]touch demo.txt[/bold cyan]")
 
