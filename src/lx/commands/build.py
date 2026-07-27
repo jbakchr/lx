@@ -1,3 +1,5 @@
+from typing import Annotated, Literal
+
 import typer
 
 from lx.tools.grep.build import build as build_grep
@@ -5,8 +7,7 @@ from lx.tools.find.build import build as build_find
 from lx.tools.curl.build import build as build_curl
 from lx.tools.jq.build import build as build_jq
 
-
-def build(tool: str) -> None:
+def build(tool: Annotated[Literal["grep", "find", "curl", "jq"], typer.Argument(help="tool to interactively build command for")]) -> None:
     """
     Build a command interactively.
     """
