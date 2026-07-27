@@ -1,21 +1,20 @@
 from lx.ui.console import (
+    page_header,
     section_header,
     separator,
     console,
 )
 
 
-def learn() -> None:
+def display_intro():
+    separator()
+    page_header("FIND", "LOCATE FILES AND DIRECTORIES.")
+
+
+def learn_section():
     separator()
 
-    section_header(
-        "[bold]FIND[/bold] - "
-        "[italic]LOCATE FILES AND DIRECTORIES.[/italic]"
-    )
-
-    separator()
-
-    section_header("[bold]Why Learn find?[/bold]")
+    section_header("Why Learn find?")
 
     console.print(
         "✓ Find files by name"
@@ -35,11 +34,11 @@ def learn() -> None:
 
     console.print()
 
-    console.print(
-        "[bold]Common Use Cases[/bold]"
-    )
 
-    console.print()
+def use_cases_section():
+    separator()
+
+    section_header("Common Use Cases")
 
     console.print(
         "• Find Python files"
@@ -55,41 +54,52 @@ def learn() -> None:
 
     console.print()
 
+
+def examples_section():
     separator()
 
-    section_header("[bold]Examples[/bold]")
+    section_header("Examples")
 
-    console.print(
-        '[bold cyan]find . -name "*.py"[/bold cyan]'
-    )
+    console.print('  [bold cyan]find . -name "*.py"[/bold cyan]')
 
-    console.print()
-
-    console.print(
-        "[italic]→ Find all Python files.[/italic]"
-    )
+    console.print("    [italic]→ Find all Python files.[/italic]")
 
     console.print()
+
+
+def try_it_section():
     separator()
 
-    section_header("[bold]Try It[/bold]")
+    section_header("Try It")
 
-    console.print("[bold cyan]touch demo.txt[/bold cyan]")
-
-    console.print()
-
-    console.print("[bold cyan]find . -name \"demo.txt\"[/bold cyan]")
+    console.print("  [bold cyan]touch demo.txt[/bold cyan]")
 
     console.print()
 
-    console.print("→ Find one specific file")
+    console.print("  [bold cyan]find . -name \"demo.txt\"[/bold cyan]")
 
     console.print()
 
-    console.print("[bold cyan]find . -name \"*.py\"[/bold cyan]")
+    console.print("[italic]   → Find one specific file[italic]")
 
     console.print()
 
-    console.print("→ Find all Python files")
+    console.print("  [bold cyan]find . -name \"*.py\"[/bold cyan]")
 
     console.print()
+
+    console.print("[italic]    → Find all Python files[/italic]")
+
+    console.print()
+
+
+def learn() -> None:
+    display_intro()
+
+    learn_section()
+
+    use_cases_section()
+
+    examples_section()
+
+    try_it_section()
