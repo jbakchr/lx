@@ -8,15 +8,13 @@ def separator() -> None:
     console.print(Rule())
 
 
-def page_header(command_name: str, command_desc: str):
+def page_header(command_name: str, command_desc: str) -> None:
     console.print()
     console.print(f"[bold]{command_name.upper()}[/bold] - [italic]{command_desc.upper()}[/italic]")
     console.print()
 
 
-def section_header(
-    text: str,
-) -> None:
+def section_header(text: str) -> None:
     console.print()
     console.print(text)
     console.print()
