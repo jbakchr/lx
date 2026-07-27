@@ -5,25 +5,27 @@ from lx.ui.console import (
     separator,
 )
 
-
-def learn() -> None:
+def display_intro():
     separator()
-    header(
-        "[bold]CURL[/bold] [italic]- RETRIEVE DATA FROM THE INTERNET.[/italic]"
-    )
+    header("[bold]CURL[/bold] [italic]- RETRIEVE DATA FROM THE INTERNET.[/italic]")
+
+
+def learn_section():
     separator()
 
     header("[bold]Why Learn?[/bold]")
-
+    
     print("""  [cyan]curl[/cyan] is one of the most common command-line tools for working with websites, APIs, and online services.
-
+    
   Learning [cyan]curl[/cyan] helps you retrieve data directly from your terminal.
-
+    
   Many developer tools communicate with web services behind the scenes.
-
+    
   [cyan]curl[/cyan] lets you see and test those requests yourself.
 """)
 
+
+def use_cases_section():
     separator()
 
     header("[bold]Common Use Cases[/bold]")
@@ -37,6 +39,8 @@ def learn() -> None:
   • Troubleshoot web services
 """)
 
+
+def examples_section():
     separator()
 
     header("[bold]Examples[/bold]")
@@ -51,6 +55,8 @@ def learn() -> None:
     [italic]→ retrieve a web page[/italic]
 """)
 
+
+def try_it_section():
     separator()
 
     header("[bold]Try It[/bold]")
@@ -64,4 +70,16 @@ def learn() -> None:
     → The response is JSON data.
 
   [italic]Later, [cyan]jq[/cyan] can help explore that data.[/italic]
-""")
+""")    
+
+
+def learn() -> None:
+    display_intro()
+
+    learn_section()
+
+    use_cases_section()
+
+    examples_section()
+
+    try_it_section()
